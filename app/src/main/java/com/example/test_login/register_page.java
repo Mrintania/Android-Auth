@@ -63,6 +63,7 @@ public class register_page extends AppCompatActivity {
                 user.put("email", email.getText().toString());
                 user.put("gender", radio.getText().toString());
                 user.put("phone", phone.getText().toString());
+                user.put("status", "1");
 
                 db.collection("user").document(username.getText().toString()).set(user)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -91,10 +92,16 @@ public class register_page extends AppCompatActivity {
                 email.setText("");
                 phone.setText("");
                 gender_group.clearCheck();
-
             }
         });
 
 
     }
 }
+
+
+//Check duplicate username, name
+/*
+* username
+* name lname
+* */

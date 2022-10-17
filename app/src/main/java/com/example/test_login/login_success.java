@@ -31,6 +31,7 @@ public class login_success extends AppCompatActivity {
             deleteDir(dir);
         } catch (Exception e) {}
     }
+
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
@@ -64,10 +65,9 @@ public class login_success extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         //เรียกข้อมูลจาก Firebase
-        //ต้องเอาค่าจาก Login มาใช้
         Intent get_username = getIntent();
 
-        DocumentReference docRef = db.collection("user").document(get_username.getStringExtra("username"));
+        DocumentReference docRef = db.collection("user").document(get_username.getStringExtra("username")); //ต้องเอาค่าจาก Login มาใช้
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -91,8 +91,17 @@ public class login_success extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goto_login_page = new Intent(login_success.this,login_page.class);
                 deleteCache(login_success.this);
+                finish();
                 startActivity(goto_login_page);
             }
         });
     }
 }
+
+//Edit profile
+/*
+* update name
+* lname
+* password old
+* password new
+* */
