@@ -24,6 +24,7 @@ import java.io.File;
 public class login_success extends AppCompatActivity {
 
     TextView username,password,phone,email,name,gender;
+    Button edit;
 
     FirebaseFirestore firebaseFirestore;
 
@@ -59,6 +60,16 @@ public class login_success extends AppCompatActivity {
                         gender.setText(document.get("gender").toString());
                     }
                 }
+            }
+        });
+
+        edit = findViewById(R.id.but_edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(login_success.this, Edit_Profile_Activity.class);
+                intent.putExtra("username", get_username.getStringExtra("username"));
+                startActivity(intent);
             }
         });
 

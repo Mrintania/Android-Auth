@@ -96,4 +96,13 @@
         app:layout_constraintBottom_toTopOf="@+id/txt_pn"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/but_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="547dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

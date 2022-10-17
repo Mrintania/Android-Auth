@@ -136,6 +136,8 @@ public class Login_Activity extends AppCompatActivity {
             } else {
                 DocumentReference docRef = db.collection("user").document(username);
                 DocumentReference docAdmin = db.collection("admin").document(username);
+
+                //Check if user is admin
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
