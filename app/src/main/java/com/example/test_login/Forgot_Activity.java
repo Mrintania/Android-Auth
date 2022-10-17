@@ -42,7 +42,6 @@ public class Forgot_Activity extends AppCompatActivity {
         finish();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +51,6 @@ public class Forgot_Activity extends AppCompatActivity {
         email = findViewById(R.id.fed_email);
         submit = findViewById(R.id.but_submit);
         clear = findViewById(R.id.but_clear);
-
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

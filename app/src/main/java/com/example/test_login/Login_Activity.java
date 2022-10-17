@@ -29,7 +29,6 @@ public class Login_Activity extends AppCompatActivity {
     Button login,clear,forgotPass;
     int counter = 0;
 
-
     //Floating edittext for username
     private void SetupUsernameFloatingLabelError() {
         final TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
@@ -136,6 +135,7 @@ public class Login_Activity extends AppCompatActivity {
                 Toast.makeText(Login_Activity.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
             } else {
                 DocumentReference docRef = db.collection("user").document(username);
+                DocumentReference docAdmin = db.collection("admin").document(username);
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -181,6 +181,14 @@ public class Login_Activity extends AppCompatActivity {
                     }
                 });
             }
+        });
+
+        //Forgot password Button
+        forgotPass = findViewById(R.id.btn_forgot_password);
+        forgotPass.setOnClickListener(v -> {
+                Intent goto_forgot_password = new Intent(Login_Activity.this, Forgot_Activity.class);
+                startActivity(goto_forgot_password);
+
         });
 
     }

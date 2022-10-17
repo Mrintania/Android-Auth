@@ -54,13 +54,14 @@ public class register_page extends AppCompatActivity {
                 //แปลงค่าใน Rad-G ให้เป็น String
                 int selected = gender_group.getCheckedRadioButtonId();
                 RadioButton radio=(RadioButton) findViewById(selected);
+                String RadioSex = radio.getText().toString();
 
                 Map<String, Object> user = new HashMap<>();
                 user.put("username", username.getText().toString());
                 user.put("password", password.getText().toString());
                 user.put("name", name.getText().toString());
                 user.put("email", email.getText().toString());
-                user.put("gender", radio.getText().toString());
+                user.put("gender", RadioSex);
                 user.put("phone", phone.getText().toString());
                 user.put("status", "1");
 
