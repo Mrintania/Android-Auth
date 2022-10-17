@@ -26,6 +26,7 @@ public class register_page extends AppCompatActivity {
     RadioButton male, female;
     RadioGroup gender_group;
 
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class register_page extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         username = findViewById(R.id.ed_username);
         password = findViewById(R.id.ed_userpass);
@@ -45,8 +46,6 @@ public class register_page extends AppCompatActivity {
         gender_group = findViewById(R.id.radioGroup_gender);
         male = findViewById(R.id.rad_male);
         female = findViewById(R.id.rad_female);
-
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +76,9 @@ public class register_page extends AppCompatActivity {
                             }
                        });
 
-                //Goto-Register-page
-                Intent intent = new Intent(register_page.this, login_success.class);
+                //Goto-Login-page
+                Intent intent = new Intent(register_page.this, login_page.class);
+                finish();
                 startActivity(intent);
             }
         });

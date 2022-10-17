@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +30,43 @@ public class login_page extends AppCompatActivity {
     EditText username,password;
 
     int counter = 0;
+
+    //Floating edittext for username and password
+    private void SetupFloatingLabelError() {
+        final TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
+        floatingUsernameLabel.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+                if (text.length() > 0 && text.length() <= 4) {
+                    floatingUsernameLabel.setError("Username is required");
+                    floatingUsernameLabel.setErrorEnabled(true);
+                } else {
+                    floatingUsernameLabel.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+
+    // Check username and password must be correct
+    /*public void SendMessage(View view){
+        message = message.trim();
+        if (message.length() == 0){
+            username.setError("Please enter a message");
+        }
+
+    }*/
+
 
     //send login data to login_success
     private void sendLoginData(){
@@ -46,7 +86,6 @@ public class login_page extends AppCompatActivity {
         username = findViewById(R.id.ed_username);
         password = findViewById(R.id.ed_userpass);
         forgotPass = findViewById(R.id.but_ForgotPassword);
-
 
         //Forgot password
         forgotPass.setOnClickListener(new View.OnClickListener() {

@@ -24,9 +24,6 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    /*GoogleSignInOptions gso;
-    GoogleSignInClient gsc;*/
-
     GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "MainActivity";
@@ -38,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button login = findViewById(R.id.but_signin);
-        Button register = findViewById(R.id.but_register);
+        getCacheDir().delete();
+
         googleBtn = findViewById(R.id.img_google);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(ConnectionResult connectionResult) {
-                        Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Something went wrong Connection", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -57,14 +54,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         
         googleBtn.setOnClickListener(this);
 
+        Button login = findViewById(R.id.but_signin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, login_page.class);
+                Intent intent = new Intent(MainActivity.this, Login_Activity.class);
                 startActivity(intent);
             }
         });
 
+        Button register = findViewById(R.id.but_register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             navigateToGoogleActivity();
         } else {
             // Signed out, show unauthenticated UI.
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong SignIn", Toast.LENGTH_SHORT).show();
         }
 
         }
@@ -117,4 +116,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 }
+
+/*
+* แก้ไข Profile
+* */
 

@@ -25,30 +25,7 @@ public class login_success extends AppCompatActivity {
 
     TextView username,password,phone,email,name,gender;
 
-    public static void deleteCache(Context context) {
-        try {
-            File dir = context.getCacheDir();
-            deleteDir(dir);
-        } catch (Exception e) {}
-    }
-
-    public static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-            return dir.delete();
-        } else if(dir!= null && dir.isFile()) {
-            return dir.delete();
-        } else {
-            return false;
-        }
-    }
-
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +66,8 @@ public class login_success extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goto_login_page = new Intent(login_success.this,login_page.class);
-                deleteCache(login_success.this);
                 finish();
+                Intent goto_login_page = new Intent(login_success.this,login_page.class);
                 startActivity(goto_login_page);
             }
         });
