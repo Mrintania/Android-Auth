@@ -26,8 +26,6 @@ public class login_success extends AppCompatActivity {
     TextView username,password,phone,email,name,gender;
     Button edit;
 
-    FirebaseFirestore firebaseFirestore;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +65,13 @@ public class login_success extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login_success.this, Edit_Profile_Activity.class);
-                intent.putExtra("username", get_username.getStringExtra("username"));
-                startActivity(intent);
+                Intent goto_EditProfile = new Intent(login_success.this, Edit_Profile_Activity.class);
+                goto_EditProfile.putExtra("username", username.getText().toString());
+                goto_EditProfile.putExtra("password", password.getText().toString());
+                goto_EditProfile.putExtra("phone", phone.getText().toString());
+                goto_EditProfile.putExtra("email", email.getText().toString());
+                goto_EditProfile.putExtra("name", name.getText().toString());
+                startActivity(goto_EditProfile);
             }
         });
 
