@@ -18,8 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Edit_Profile_Activity extends AppCompatActivity {
 
-    EditText name;
-    Button update;
+    EditText name,email, phone, address, password;
+    Button update,back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,8 @@ public class Edit_Profile_Activity extends AppCompatActivity {
 
 
         name = findViewById(R.id.et_name);
+        email = findViewById(R.id.et_email);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         //เรียกข้อมูลจาก Firebase
@@ -41,6 +43,7 @@ public class Edit_Profile_Activity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         name.setText(document.get("name").toString());
+                        email.setText(document.get("email").toString());
                     }
                 }
             }
@@ -51,13 +54,17 @@ public class Edit_Profile_Activity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DocumentReference docRef = db.collection("user").document(get_username.getStringExtra("username"));
-                docRef.update("name",name.getText().toString());
+                DocumentReference docRefUpdate = db.collection("user").document(get_username.getStringExtra("username"));
+                docRefUpdate.update("name",name.getText().toString());
+                docRefUpdate.update("email",email.getText().toString());
                 Toast.makeText(Edit_Profile_Activity.this, "Profile has updated", Toast.LENGTH_SHORT).show();
+                Intent goto_login_success = new Intent(Edit_Profile_Activity.this, login_success.class);
+                startActivity(goto_login_success);
             }
         });
 
 
 
     }
+
 }

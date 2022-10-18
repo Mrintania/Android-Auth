@@ -31,7 +31,7 @@
         android:id="@+id/txt_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="26dp"
         android:text="Password"
         app:layout_constraintStart_toStartOf="@+id/txt_username"
         app:layout_constraintTop_toBottomOf="@+id/txt_username" />
@@ -50,8 +50,8 @@
         android:id="@+id/txt_pn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="14dp"
         android:text="Phone"
         app:layout_constraintBottom_toTopOf="@+id/txt_gender"
         app:layout_constraintEnd_toEndOf="@+id/txt_gender" />
@@ -60,31 +60,31 @@
         android:id="@+id/txt_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="1dp"
         android:text="Gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txt_email"
         app:layout_constraintTop_toBottomOf="@+id/txt_email" />
 
     <TextView
         android:id="@+id/txt_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="23dp"
+        android:layout_marginEnd="7dp"
         android:text="E-mail"
-        app:layout_constraintStart_toStartOf="@+id/txt_pn"
+        app:layout_constraintEnd_toEndOf="@+id/txt_password"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
     <Button
         android:id="@+id/but_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="93dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="15dp"
         android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
+        app:layout_constraintBottom_toTopOf="@+id/but_edit"
+        app:layout_constraintStart_toStartOf="@+id/but_edit" />
 
     <TextView
         android:id="@+id/textView4"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
         android:layout_marginBottom="25dp"
-        android:text="TextView"
+        android:text="E-mail"
         app:layout_constraintBottom_toTopOf="@+id/txt_pn"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,9 +100,10 @@
         android:id="@+id/but_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="136dp"
         android:text="Edit profile"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="547dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

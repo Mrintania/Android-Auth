@@ -94,13 +94,22 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     //SendLoginData to LoginSuccess_Activity
-    private void SendLogInData() {
+    private void SendUsersLogInData() {
         Intent goto_login_success = new Intent(Login_Activity.this, login_success.class);
         TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
         floatingUsernameLabel.getEditText().getText().toString();
         goto_login_success.putExtra("username", floatingUsernameLabel.getEditText().getText().toString());
         finish();
         startActivity(goto_login_success);
+    }
+
+    private void SendAdminLogInData() {
+        Intent goto_admin_login_success = new Intent(Login_Activity.this, Admin_Activity.class);
+        TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
+        floatingUsernameLabel.getEditText().getText().toString();
+        goto_admin_login_success.putExtra("username", floatingUsernameLabel.getEditText().getText().toString());
+        finish();
+        startActivity(goto_admin_login_success);
     }
 
     @Override
@@ -137,8 +146,53 @@ public class Login_Activity extends AppCompatActivity {
                 DocumentReference docRef = db.collection("user").document(username);
                 DocumentReference docAdmin = db.collection("admin").document(username);
 
-                //Check if user is admin
-                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                //check user is admin or not
+                docAdmin.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String admin_password = document.getString("password");
+                                if (admin_password.equals(password)) {
+                                    Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                    SendAdminLogInData();
+                                } else {
+                                    Toast.makeText(Login_Activity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                //check user is user or not
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if (document.exists()) {
+                                                String user_password = document.getString("password");
+                                                if (user_password.equals(password)) {
+                                                    Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                                    SendUsersLogInData();
+                                                } else {
+                                                    Toast.makeText(Login_Activity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Toast.makeText(Login_Activity.this, "User not found", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            Toast.makeText(Login_Activity.this, "User not found", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        } else {
+                            Toast.makeText(Login_Activity.this, "User not found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+                //Check is users
+                /*docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
@@ -181,7 +235,7 @@ public class Login_Activity extends AppCompatActivity {
                         });
                         builder.show();
                     }
-                });
+                });*/
             }
         });
 
