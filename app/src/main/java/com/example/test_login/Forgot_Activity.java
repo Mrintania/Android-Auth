@@ -33,13 +33,12 @@ public class Forgot_Activity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Forgot_Activity.this,login_page.class);
+                Intent intent = new Intent(Forgot_Activity.this,Login_Activity.class);
                 startActivity(intent);
                 dialog.dismiss();
             }
         });
         builder.show();
-        finish();
     }
 
     @Override

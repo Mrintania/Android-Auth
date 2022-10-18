@@ -51,18 +51,30 @@ public class register_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String username1 = username.getText().toString();
+                String password1 = password.getText().toString();
+                String name1 = name.getText().toString();
+                String email1 = email.getText().toString();
+                String phone1 = phone.getText().toString();
+
+
+
+                if (username1.isEmpty() || password1.isEmpty() || name1.isEmpty() || email1.isEmpty() || phone1.isEmpty()) {
+                    Toast.makeText(register_page.this, "มึงต้องใส่ให้หมดนะ", Toast.LENGTH_SHORT).show();
+                } else {
+
                 //แปลงค่าใน Rad-G ให้เป็น String
                 int selected = gender_group.getCheckedRadioButtonId();
                 RadioButton radio=(RadioButton) findViewById(selected);
                 String RadioSex = radio.getText().toString();
 
                 Map<String, Object> user = new HashMap<>();
-                user.put("username", username.getText().toString());
-                user.put("password", password.getText().toString());
-                user.put("name", name.getText().toString());
-                user.put("email", email.getText().toString());
+                user.put("username", username1);
+                user.put("password", password1);
+                user.put("name", name1);
+                user.put("email", email1);
                 user.put("gender", RadioSex);
-                user.put("phone", phone.getText().toString());
+                user.put("phone", phone1);
                 user.put("status", "1");
 
                 db.collection("user").document(username.getText().toString()).set(user)
@@ -81,6 +93,8 @@ public class register_page extends AppCompatActivity {
                 Intent intent = new Intent(register_page.this, login_page.class);
                 finish();
                 startActivity(intent);
+
+                }
             }
         });
 
