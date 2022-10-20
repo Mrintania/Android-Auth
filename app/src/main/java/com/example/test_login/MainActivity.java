@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(ConnectionResult connectionResult) {
-                        Toast.makeText(MainActivity.this, "Something went wrong Connection", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Something went wrong Connection", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)

@@ -138,6 +138,7 @@ public class Login_Activity extends AppCompatActivity {
             String username = floatingUsernameLabel.getEditText().getText().toString();
             String password = floatingPasswordLabel.getEditText().getText().toString();
 
+
             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
             if (username.isEmpty() || password.isEmpty()) {
@@ -169,11 +170,26 @@ public class Login_Activity extends AppCompatActivity {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 String user_password = document.getString("password");
-                                                if (user_password.equals(password)) {
+                                                //String user_status = document.getString("status");
+                                                StringBuilder user_status_builder = new StringBuilder();
+                                                user_status_builder.append(document.get("status"));
+
+                                                if (user_password.equals(password) && user_status_builder.toString().equals("1") ) {
                                                     Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();
                                                     SendUsersLogInData();
+                                                } else if(user_password.equals(password) && user_status_builder.toString().equals("0")){
+                                                    alterDialog();
                                                 } else {
-                                                    Toast.makeText(Login_Activity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                                    counter = counter + 1;
+                                                    if (!user_password.equals(password) && user_status_builder.toString().equals("1") && counter<5) {
+                                                        Toast.makeText(Login_Activity.this, "Wrong Password " + counter + " Time", Toast.LENGTH_SHORT).show();
+                                                    } else if(counter<5 && user_password.equals(password) && user_status_builder.toString().equals("0")){
+                                                        alterDialog();
+                                                    }else {
+                                                        db.collection("user").document(username).update("status", "0");
+                                                        //Toast.makeText(Login_Activity.this, "You have been locked out", Toast.LENGTH_SHORT).show();
+                                                        alterDialog();
+                                                    }
                                                 }
                                             } else {
                                                 Toast.makeText(Login_Activity.this, "User not found", Toast.LENGTH_SHORT).show();
@@ -189,8 +205,6 @@ public class Login_Activity extends AppCompatActivity {
                         }
                     }
                 });
-
-
                 //Check is users
                 /*docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -246,6 +260,19 @@ public class Login_Activity extends AppCompatActivity {
                 startActivity(goto_forgot_password);
 
         });
-
     }
+
+    private void alterDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
+        builder.setTitle("Login Failed");
+        builder.setMessage("You Account is LOCK !!! Please wait for admin to approve or forgot password");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
 }

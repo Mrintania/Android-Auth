@@ -80,7 +80,7 @@ public class login_success extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent goto_login_page = new Intent(login_success.this,login_page.class);
+                Intent goto_login_page = new Intent(login_success.this,Login_Activity.class);
                 startActivity(goto_login_page);
             }
         });
