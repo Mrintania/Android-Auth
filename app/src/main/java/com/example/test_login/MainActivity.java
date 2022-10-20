@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GotoShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent GGG = new Intent(MainActivity.this, ShowUser_Activity.class);
+                Intent GGG = new Intent(MainActivity.this, Admin_edit_user_Activity.class);
                 startActivity(GGG);
             }
         });

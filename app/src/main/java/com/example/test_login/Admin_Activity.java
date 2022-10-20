@@ -22,26 +22,21 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.auth.User;
 
 import kotlin.jvm.internal.FunctionAdapter;
 
 public class Admin_Activity extends AppCompatActivity {
-
-
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     RecyclerView recyclerView;
     FirestoreRecyclerAdapter adapter;
 
-    LayoutInflater inflater = getLayoutInflater();
-    View alertLayout = inflater.inflate(R.layout.member_data, null);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-
 
         recyclerView = findViewById(R.id.recyclerView);
         Query query = db.collection("user");
@@ -66,15 +61,6 @@ public class Admin_Activity extends AppCompatActivity {
                 holder.name.setText(model.getName());
                 holder.gender.setText(model.getGender());
                 holder.status.setText(model.getStatus());
-                Button edit = holder.itemView.findViewById(R.id.btn_update_PerUser);
-                edit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Admin_Activity.this, register_page.class);
-                        startActivity(intent);
-                    }
-                });
-
             }
         };
         recyclerView.setHasFixedSize(true);
@@ -99,7 +85,7 @@ public class Admin_Activity extends AppCompatActivity {
     public class Data_holder extends RecyclerView.ViewHolder {
 
         TextView username, password, email, phone, name, gender,status;
-        Button edit;
+        User user;
 
         public Data_holder(@NonNull View itemView) {
             super(itemView);
@@ -110,13 +96,26 @@ public class Admin_Activity extends AppCompatActivity {
             name =  itemView.findViewById(R.id.card_name);
             gender = itemView.findViewById(R.id.card_gender);
             status = itemView.findViewById(R.id.card_status);
-            edit = itemView.findViewById(R.id.btn_update_PerUser);
 
+            itemView.findViewById(R.id.btn_update_PerUser).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Admin_Activity.this, Admin_edit_user_Activity.class);
+                    //intent.putExtra("username", username.getText().toString());
+                    startActivity(intent);
+
+                    //Toast.makeText(Admin_Activity.this, "R", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
 
-    /*//
+
+
+
+
+    //
     void ald() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -157,5 +156,5 @@ public class Admin_Activity extends AppCompatActivity {
 
 
         //test
-    }*/
+    }
 }

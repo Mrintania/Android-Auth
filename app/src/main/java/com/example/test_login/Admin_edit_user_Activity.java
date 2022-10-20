@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -25,8 +26,8 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    RecyclerView recyclerView;
-    FirestoreRecyclerAdapter adapter;
+    RecyclerView recyclerView_ed;
+    FirestoreRecyclerAdapter adapter1;
 
 
     @Override
@@ -34,38 +35,38 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit_user);
 
-        Intent i = getIntent();
-        String username = i.getStringExtra("username");
+        /*Intent i = getIntent();
+        String username = i.getStringExtra("username");*/
 
-        recyclerView = findViewById(R.id.recyclerViewEditUser);
-        Query query = db.document(username).collection("user");
-        FirestoreRecyclerOptions<show_member> options = new FirestoreRecyclerOptions.Builder<show_member>()
-                .setQuery(query, show_member.class)
+        recyclerView_ed = findViewById(R.id.recyclerViewEditUser);
+        Query query_ed = db.collection("user");
+        FirestoreRecyclerOptions<show_member_edit> options_ed = new FirestoreRecyclerOptions.Builder<show_member_edit>()
+                .setQuery(query_ed, show_member_edit.class)
                 .build();
 
-        adapter = new FirestoreRecyclerAdapter<show_member, Admin_edit_user_Activity.Data_holder>(options) {
+        adapter1 = new FirestoreRecyclerAdapter<show_member_edit, Admin_edit_user_Activity.Data_holder_ed>(options_ed) {
             @NonNull
             @Override
-            public Admin_edit_user_Activity.Data_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_data_edit, parent, false);
-                return new Data_holder(view);
+            public Admin_edit_user_Activity.Data_holder_ed onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View viewV = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_data_edit, parent, false);
+                return new Data_holder_ed(viewV);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull Admin_edit_user_Activity.Data_holder holder, int position, @NonNull show_member model) {
+            protected void onBindViewHolder(@NonNull Admin_edit_user_Activity.Data_holder_ed holder, int position, @NonNull show_member_edit model) {
                 holder.username.setText(model.getUsername());
                 holder.password.setText(model.getPassword());
                 holder.email.setText(model.getEmail());
                 holder.phone.setText(model.getPhone());
                 holder.name.setText(model.getName());
                 holder.gender.setText(model.getGender());
-                holder.status.setText(model.getStatus());
+                //holder.status.setText(model.getStatus());
 
             }
         };
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerView_ed.setHasFixedSize(true);
+        recyclerView_ed.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_ed.setAdapter(adapter1);
 
 
     }
@@ -73,28 +74,28 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        adapter.startListening();
+        adapter1.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
+        adapter1.stopListening();
     }
 
-    private class Data_holder extends RecyclerView.ViewHolder {
+    private class Data_holder_ed extends RecyclerView.ViewHolder {
 
-        TextView username, password, email, phone, name, gender,status;
+        EditText username, password, email, phone, name, gender,status;
 
-        public Data_holder(@NonNull View itemView) {
+        public Data_holder_ed(@NonNull View itemView) {
             super(itemView);
-            username = itemView.findViewById(R.id.card_username);
-            password = itemView.findViewById(R.id.card_password);
-            email = itemView.findViewById(R.id.card_email);
-            phone = itemView.findViewById(R.id.card_phone);
-            name =  itemView.findViewById(R.id.card_name);
-            gender = itemView.findViewById(R.id.card_gender);
-            status = itemView.findViewById(R.id.card_status);
+            username = itemView.findViewById(R.id.card_edit_username);
+            password = itemView.findViewById(R.id.card_edit_password);
+            email = itemView.findViewById(R.id.card_edit_email);
+            phone = itemView.findViewById(R.id.card_edit_phone);
+            name =  itemView.findViewById(R.id.card_edit_name);
+            gender = itemView.findViewById(R.id.card_edit_gender);
+            status = itemView.findViewById(R.id.card_edit_status);
 
         }
     }

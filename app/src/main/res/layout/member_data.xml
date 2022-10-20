@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".member_data_Activity">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_edit_user"
