@@ -2,12 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".member_data_Activity">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_edit_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -27,8 +24,8 @@
                     android:layout_weight="1"
                     android:text="Username : " />
 
-                <TextView
-                    android:id="@+id/card_username"
+                <EditText
+                    android:id="@+id/card_edit_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Username" />
@@ -46,8 +43,8 @@
                     android:layout_weight="1"
                     android:text="Password : " />
 
-                <TextView
-                    android:id="@+id/card_password"
+                <EditText
+                    android:id="@+id/card_edit_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password" />
@@ -66,8 +63,8 @@
                     android:layout_weight="1"
                     android:text="Name : " />
 
-                <TextView
-                    android:id="@+id/card_name"
+                <EditText
+                    android:id="@+id/card_edit_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="name" />
@@ -85,8 +82,8 @@
                     android:layout_weight="1"
                     android:text="Phone : " />
 
-                <TextView
-                    android:id="@+id/card_phone"
+                <EditText
+                    android:id="@+id/card_edit_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone" />
@@ -104,8 +101,8 @@
                     android:layout_weight="1"
                     android:text="Email : " />
 
-                <TextView
-                    android:id="@+id/card_email"
+                <EditText
+                    android:id="@+id/card_edit_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="email" />
@@ -123,8 +120,8 @@
                     android:layout_weight="1"
                     android:text="Gender : " />
 
-                <TextView
-                    android:id="@+id/card_gender"
+                <EditText
+                    android:id="@+id/card_edit_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gender" />
@@ -142,8 +139,8 @@
                     android:layout_weight="1"
                     android:text="Status : " />
 
-                <TextView
-                    android:id="@+id/card_status"
+                <EditText
+                    android:id="@+id/card_edit_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Status" />
@@ -161,24 +158,15 @@
                     android:layout_height="wrap_content"
                     android:text="-----------------"
                     android:gravity="center"/>
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btn_update_PerUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Edit" />
-            </LinearLayout>
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/btn_update55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:gravity="center"
+        android:layout_gravity="center"/>
 </LinearLayout>
