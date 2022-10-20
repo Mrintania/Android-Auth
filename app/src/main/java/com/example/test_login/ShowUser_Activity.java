@@ -19,36 +19,33 @@ import com.google.firebase.firestore.Query;
 
 import kotlin.jvm.internal.FunctionAdapter;
 
-public class Admin_Activity extends AppCompatActivity {
-
-
+public class ShowUser_Activity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     RecyclerView recyclerView;
     FirestoreRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_show_user);
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView2);
         Query query = db.collection("user");
         FirestoreRecyclerOptions<show_member> options = new FirestoreRecyclerOptions.Builder<show_member>()
                 .setQuery(query, show_member.class)
                 .build();
 
-        adapter = new FirestoreRecyclerAdapter<show_member, Admin_Activity.Data_holder>(options) {
+        adapter = new FirestoreRecyclerAdapter<show_member, Data_holder>(options) {
             @NonNull
             @Override
-            public Admin_Activity.Data_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public Data_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_data, parent, false);
                 return new Data_holder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull Admin_Activity.Data_holder holder, int position, @NonNull show_member model) {
+            protected void onBindViewHolder(@NonNull Data_holder holder, int position, @NonNull show_member model) {
                 holder.username.setText(model.getUsername());
                 holder.password.setText(model.getPassword());
                 holder.email.setText(model.getEmail());

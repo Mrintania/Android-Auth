@@ -37,6 +37,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         getCacheDir().delete();
 
+        Button GotoShow = findViewById(R.id.button1);
+        GotoShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent GGG = new Intent(MainActivity.this, ShowUser_Activity.class);
+                startActivity(GGG);
+            }
+        });
+
         googleBtn = findViewById(R.id.img_google);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
