@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:4220304837:android:b1529ccb1c2cd8e992dfac",
+        "mobilesdk_app_id": "1:4220304837:android:f7d0791b5eb93ca292dfac",
         "android_client_info": {
-          "package_name": "com.example.test_login"
+          "package_name": "com.example.Register_GoogleSSO"
         }
       },
       "oauth_client": [

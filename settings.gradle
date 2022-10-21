@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "test_login"
+rootProject.name = "Register_GoogleSSO"
 include ':app'
