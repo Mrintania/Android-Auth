@@ -51,12 +51,7 @@ public class Login_Activity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                /*if (s.length() == 0 ) {
-                    floatingUsernameLabel.setError("Username is required");
-                    floatingUsernameLabel.setErrorEnabled(true);
-                } else {
-                    floatingUsernameLabel.setErrorEnabled(false);
-                }*/
+
             }
         });
     }
@@ -83,12 +78,7 @@ public class Login_Activity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                /*if (s.length() == 0 ) {
-                    floatingPasswordLabel.setError("Password is required");
-                    floatingPasswordLabel.setErrorEnabled(true);
-                } else {
-                    floatingPasswordLabel.setErrorEnabled(false);
-                }*/
+
             }
         });
     }

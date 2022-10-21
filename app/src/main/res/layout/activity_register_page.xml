@@ -16,9 +16,11 @@
         android:text="Register-Page"
         android:textColor="@color/black"
         android:textSize="30dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
         android:layout_gravity="center"
         tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="56dp" />
+        tools:layout_editor_absoluteY="56dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -97,8 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:hint="Please enter your username"
+                android:capitalize="none"
                 tools:layout_editor_absoluteX="134dp"
                 tools:layout_editor_absoluteY="133dp" />
 

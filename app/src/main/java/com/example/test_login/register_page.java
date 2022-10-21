@@ -104,7 +104,7 @@ public class register_page extends AppCompatActivity {
 
 
                                     //Goto-Login-page
-                                    Intent intent = new Intent(register_page.this, login_page.class);
+                                    Intent intent = new Intent(register_page.this, Login_Activity.class);
                                     finish();
                                     startActivity(intent);
                                 }
