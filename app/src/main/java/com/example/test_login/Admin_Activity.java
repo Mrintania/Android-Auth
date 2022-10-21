@@ -70,7 +70,15 @@ public class Admin_Activity extends AppCompatActivity {
                 holder.phone.setText(model.getPhone());
                 holder.name.setText(model.getName());
                 holder.gender.setText(model.getGender());
-                holder.status.setText(model.getStatus());
+
+                //Convert status from 1 to Active and 0 to Inactive
+                if(model.getStatus().equals("1")) {
+                    holder.status.setText("Active");
+                } else {
+                    holder.status.setText("Inactive");
+                    //If status is Inactive, TextView will be red
+                    holder.status.setTextColor(getResources().getColor(R.color.red));
+                }
             }
         };
         recyclerView.setHasFixedSize(true);

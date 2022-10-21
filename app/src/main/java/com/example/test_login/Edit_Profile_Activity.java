@@ -84,14 +84,15 @@ public class Edit_Profile_Activity extends AppCompatActivity {
 
 
         //กลับไปหน้า login_success
-        back = findViewById(R.id.but_back);
+        /*back = findViewById(R.id.but_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent back = new Intent(Edit_Profile_Activity.this, login_success.class);
+                finish();
                 startActivity(back);
             }
-        });
+        });*/
 
     }
 

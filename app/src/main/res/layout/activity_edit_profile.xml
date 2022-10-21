@@ -97,12 +97,12 @@
         android:layout_gravity="center"
         android:text="update Profile"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/but_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Back"/>
+        android:text="Back"/>-->
 
 
 </LinearLayout>
