@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -35,11 +37,15 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit_user);
 
-        /*Intent i = getIntent();
-        String username = i.getStringExtra("username");*/
+
+
+        Intent i = getIntent();
+        String get_username = i.getStringExtra("username");
 
         recyclerView_ed = findViewById(R.id.recyclerViewEditUser);
-        Query query_ed = db.collection("user");
+
+        Query query_ed = db.collection("user").whereEqualTo("username", get_username);
+        //Query query_ed = db.collection("user");
         FirestoreRecyclerOptions<show_member_edit> options_ed = new FirestoreRecyclerOptions.Builder<show_member_edit>()
                 .setQuery(query_ed, show_member_edit.class)
                 .build();
@@ -60,7 +66,6 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
                 holder.phone.setText(model.getPhone());
                 holder.name.setText(model.getName());
                 holder.gender.setText(model.getGender());
-                //holder.status.setText(model.getStatus());
 
             }
         };
@@ -97,22 +102,24 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
             gender = itemView.findViewById(R.id.card_edit_gender);
             status = itemView.findViewById(R.id.card_edit_status);
 
+            itemView.findViewById(R.id.btn_update55).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AdminUpdate();
+                    //Toast.makeText(Admin_edit_user_Activity.this, "Profile has been UPDATE!!!", Toast.LENGTH_SHORT).show();
+                    alterDialog();
+                }
+            });
         }
     }
 
     //
-    void ald() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.member_data_edit, null);
-        builder.setView(view);
-
+    void AdminUpdate() {
         EditText UserEdit = (EditText) findViewById(R.id.card_edit_username);
         EditText PassEdit = (EditText) findViewById(R.id.card_edit_password);
         EditText EmailEdit = (EditText) findViewById(R.id.card_edit_email);
         EditText PhoneEdit = (EditText) findViewById(R.id.card_edit_phone);
         EditText NameEdit = (EditText) findViewById(R.id.card_edit_name);
-        EditText Gender = (EditText) findViewById(R.id.card_edit_gender);
 
         String UserEdit1 = UserEdit.getText().toString();
         String PassEdit1 = PassEdit.getText().toString();
@@ -120,22 +127,32 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
         String PhoneEdit1 = PhoneEdit.getText().toString();
         String NameEdit1 = NameEdit.getText().toString();
 
-
-        Button update = view.findViewById(R.id.btn_update55);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                DocumentReference docRefUpdate = db.collection("user").document();
-                docRefUpdate.update("username", UserEdit1);
-                docRefUpdate.update("password", PassEdit1);
-                docRefUpdate.update("email", EmailEdit1);
-                docRefUpdate.update("phone", PhoneEdit1);
-                docRefUpdate.update("name", NameEdit1);
-
-            }
-        });
-        //test
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRefUpdate = db.collection("user").document(UserEdit1);
+        docRefUpdate.update("username", UserEdit1);
+        docRefUpdate.update("password", PassEdit1);
+        docRefUpdate.update("email", EmailEdit1);
+        docRefUpdate.update("phone", PhoneEdit1);
+        docRefUpdate.update("name", NameEdit1);
     }
 
+    private void alterDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Account edited");
+        builder.setMessage("Profile has been UPDATE!!!");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                EditText username = (EditText) findViewById(R.id.card_edit_username);
+                String username_put = username.getText().toString();
+
+                Intent intent = new Intent(Admin_edit_user_Activity.this, Admin_Activity.class);
+                intent.putExtra("username",username_put);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
 }

@@ -38,6 +38,16 @@ public class Admin_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        Button logout = findViewById(R.id.btn_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goto_login = new Intent(Admin_Activity.this, Login_Activity.class);
+                startActivity(goto_login);
+            }
+        });
+
+
         recyclerView = findViewById(R.id.recyclerView);
         Query query = db.collection("user");
         FirestoreRecyclerOptions<show_member> options = new FirestoreRecyclerOptions.Builder<show_member>()
@@ -101,7 +111,7 @@ public class Admin_Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(Admin_Activity.this, Admin_edit_user_Activity.class);
-                    //intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("username", username.getText().toString());
                     startActivity(intent);
 
                     //Toast.makeText(Admin_Activity.this, "R", Toast.LENGTH_SHORT).show();

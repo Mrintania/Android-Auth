@@ -29,8 +29,7 @@
                 <EditText
                     android:id="@+id/card_edit_username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="UUUUUUUUU"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -48,8 +47,7 @@
                 <EditText
                     android:id="@+id/card_edit_gender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -67,8 +65,7 @@
                 <EditText
                     android:id="@+id/card_edit_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -86,8 +83,7 @@
                 <EditText
                     android:id="@+id/card_edit_phone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -105,8 +101,7 @@
                 <EditText
                     android:id="@+id/card_edit_email"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -124,8 +119,7 @@
                 <EditText
                     android:id="@+id/card_edit_password"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -144,8 +138,7 @@
                 <EditText
                     android:id="@+id/card_edit_status"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 

@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -61,40 +63,55 @@ public class register_page extends AppCompatActivity {
 
                 if (username1.isEmpty() || password1.isEmpty() || name1.isEmpty() || email1.isEmpty() || phone1.isEmpty()) {
                     Toast.makeText(register_page.this, "มึงต้องใส่ให้หมดนะ", Toast.LENGTH_SHORT).show();
-                } else {
+                } else { //เช็ค Username ซ้ำ
+                    DocumentReference DocumentUsernameExist = firebaseFirestore.collection("user").document(username1);
 
-                //แปลงค่าใน Rad-G ให้เป็น String
-                int selected = gender_group.getCheckedRadioButtonId();
-                RadioButton radio=(RadioButton) findViewById(selected);
-                String RadioSex = radio.getText().toString();
-
-                Map<String, Object> user = new HashMap<>();
-                user.put("username", username1);
-                user.put("password", password1);
-                user.put("name", name1);
-                user.put("email", email1);
-                user.put("gender", RadioSex);
-                user.put("phone", phone1);
-                user.put("status", "1");
-
-                db.collection("user").document(username.getText().toString()).set(user)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(register_page.this, "Register Successful", Toast.LENGTH_SHORT).show();
+                    DocumentUsernameExist.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    String username2 = document.getString("username");
+                                    if (username1.equals(username2)) {
+                                        Toast.makeText(register_page.this, "มึงใส่ Username ซ้ำนะ", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
-                                    Toast.makeText(register_page.this, "Error", Toast.LENGTH_SHORT).show();
+                                    //แปลงค่าใน Rad-G ให้เป็น String
+                                    int selected = gender_group.getCheckedRadioButtonId();
+                                    RadioButton radio=(RadioButton) findViewById(selected);
+                                    String RadioSex = radio.getText().toString();
+
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("username", username1);
+                                    user.put("password", password1);
+                                    user.put("name", name1);
+                                    user.put("email", email1);
+                                    user.put("gender", RadioSex);
+                                    user.put("phone", phone1);
+                                    user.put("status", "1");
+
+                                    db.collection("user").document(username1).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(register_page.this, "Register Successful", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(register_page.this, "Error", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+
+                                    //Goto-Login-page
+                                    Intent intent = new Intent(register_page.this, login_page.class);
+                                    finish();
+                                    startActivity(intent);
                                 }
                             }
-                       });
-
-                //Goto-Login-page
-                Intent intent = new Intent(register_page.this, login_page.class);
-                finish();
-                startActivity(intent);
-
-                }
+                        }
+                    });
+                }//เช็ค Username ซ้ำ
             }
         });
 
@@ -113,10 +130,3 @@ public class register_page extends AppCompatActivity {
 
     }
 }
-
-
-//Check duplicate username, name
-/*
-* username
-* name lname
-* */

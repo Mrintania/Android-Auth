@@ -105,7 +105,7 @@ public class Login_Activity extends AppCompatActivity {
 
     private void SendAdminLogInData() {
         //Intent goto_admin_login_success = new Intent(Login_Activity.this, Admin_Activity.class);
-        Intent goto_admin_login_success = new Intent(Login_Activity.this, Admin_edit_user_Activity.class);
+        Intent goto_admin_login_success = new Intent(Login_Activity.this, Admin_Activity.class);
         TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
         floatingUsernameLabel.getEditText().getText().toString();
         goto_admin_login_success.putExtra("username", floatingUsernameLabel.getEditText().getText().toString());
