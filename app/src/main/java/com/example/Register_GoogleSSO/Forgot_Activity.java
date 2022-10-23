@@ -48,6 +48,15 @@ public class Forgot_Activity extends AppCompatActivity {
         submit = findViewById(R.id.but_submit);
         clear = findViewById(R.id.but_clear);
 
+        Intent get_username_FormLogin = getIntent();
+        get_username_FormLogin.getStringExtra("username");
+        String username1 = get_username_FormLogin.getStringExtra("username");
+
+        //ถ้ามีการส่งค่ามาจากหน้า Login ให้เก็บค่าที่ส่งมาไว้ในตัวแปร username
+        if (username1 != null){
+            username.setText(username1);
+        }
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +80,13 @@ public class Forgot_Activity extends AppCompatActivity {
                             st_email.append(documentSnapshot.get("email"));
                             st_status.append(documentSnapshot.get("status"));
 
+
                             if (st_username.toString().equals(username.getText().toString()) && st_email.toString().equals(email.getText().toString()) && st_status.toString().equals("0")) {
-                                db.collection("user").document(username.getText().toString()).update("status", "1");
-                                AldSuccess();
+                                Intent goto_password_recovery = new Intent(Forgot_Activity.this, Password_Recovery.class);
+                                goto_password_recovery.putExtra("username", username.getText().toString());
+                                startActivity(goto_password_recovery);
+                                /*db.collection("user").document(username.getText().toString()).update("status", "1");
+                                AldSuccess();*/
                             } else if (st_username.toString().equals(username.getText().toString()) && st_email.toString().equals(email.getText().toString()) && st_status.toString().equals("1")) {
                                 Toast.makeText(Forgot_Activity.this, "Your account is already unlocked", Toast.LENGTH_SHORT).show();
                             } else {
@@ -89,14 +102,6 @@ public class Forgot_Activity extends AppCompatActivity {
                         }
                     });
                 }
-                //user.put("status", "1");
-
-                //Forgot password
-                /*
-                 * username, email
-                 * update status = 1
-                 * check edittext match datastore
-                 * */
             }
         });
 

@@ -69,6 +69,7 @@ public class Admin_Activity extends AppCompatActivity {
                 //Convert status from 1 to Active and 0 to Inactive
                 if(model.getStatus().equals("1")) {
                     holder.status.setText("Active");
+                    holder.status.setTextColor(getResources().getColor(R.color.green));
 
                     //Set button btn_Unlock to false//
                     Button btn_Unlock = holder.itemView.findViewById(R.id.btn_Unlock_user);

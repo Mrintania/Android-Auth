@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="81dp"
-        android:text="Submit"
+        android:text="Unlock"
         app:layout_constraintBaseline_toBaselineOf="@+id/but_clear"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -57,11 +57,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Forget Password"
+        android:text="Recovery password"
         android:textColor="@color/black"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

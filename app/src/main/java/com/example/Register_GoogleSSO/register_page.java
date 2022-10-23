@@ -78,7 +78,7 @@ public class register_page extends AppCompatActivity {
                                 } else {
                                     //แปลงค่าใน Rad-G ให้เป็น String
                                     int selected = gender_group.getCheckedRadioButtonId();
-                                    RadioButton radio=(RadioButton) findViewById(selected);
+                                    RadioButton radio = (RadioButton) findViewById(selected);
                                     String RadioSex = radio.getText().toString();
 
                                     Map<String, Object> user = new HashMap<>();

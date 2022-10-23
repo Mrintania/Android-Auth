@@ -192,51 +192,6 @@ public class Login_Activity extends AppCompatActivity {
                         }
                     }
                 });
-                //Check is users
-                /*docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                        DocumentSnapshot document = task.getResult();
-
-                        StringBuilder st_username = new StringBuilder();
-                        StringBuilder st_password = new StringBuilder();
-                        StringBuilder st_status = new StringBuilder();
-
-                        st_username.append(document.get("username"));
-                        st_password.append(document.get("password"));
-                        st_status.append(document.get("status"));
-
-                        if (st_username.toString().equals(username) && st_password.toString().equals(password) && st_status.toString().equals("1")) {
-                            Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            SendLogInData();
-                        } else if (st_username.toString().equals(username) && st_password.toString().equals(password) && st_status.toString().equals("0")) {
-                            Toast.makeText(Login_Activity.this, "You Account is LOCK !!! Please wait for admin to approve", Toast.LENGTH_SHORT).show();
-                        } else {
-                            counter = counter + 1;
-                            if (counter < 5) {
-                                Toast.makeText(Login_Activity.this, "Login Failed " + counter + " Time", Toast.LENGTH_SHORT).show();
-                            } else {
-                                db.collection("user").document(username).update("status", "0");
-                                alterDialog(); //AlertD
-                            }
-                        }
-                    }
-
-                    //AlertDialog for 5 times login failed
-                    private void alterDialog() {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
-                        builder.setTitle("Login Failed");
-                        builder.setMessage("You Account is LOCK !!! Please wait for admin to approve");
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.show();
-                    }
-                });*/
             }
         });
 
@@ -253,10 +208,22 @@ public class Login_Activity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
         builder.setTitle("Login Failed");
         builder.setMessage("You Account is LOCK !!! Please wait for admin to approve or forgot password");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("Forgot Password", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                TextInputLayout username_layout = findViewById(R.id.username_txt_input_layout);
+                String username = username_layout.getEditText().getText().toString();
+
+                Intent goto_forgot_password = new Intent(Login_Activity.this, Forgot_Activity.class);
+                goto_forgot_password.putExtra("username", username);
+                startActivity(goto_forgot_password);
             }
         });
         builder.show();

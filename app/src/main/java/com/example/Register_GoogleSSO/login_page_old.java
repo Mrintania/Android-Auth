@@ -21,7 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class login_page extends AppCompatActivity {
+public class login_page_old extends AppCompatActivity {
 
     Button login,clear,forgotPass;
     EditText username,password;
@@ -67,7 +67,7 @@ public class login_page extends AppCompatActivity {
 
     //send login data to login_success
     private void sendLoginData(){
-        Intent goto_login_success = new Intent(login_page.this,login_success.class);
+        Intent goto_login_success = new Intent(login_page_old.this,login_success.class);
         goto_login_success.putExtra("username",username.getText().toString()); //ส่งค่าไปหน้า login_success
         finish();
         startActivity(goto_login_success);
@@ -88,7 +88,7 @@ public class login_page extends AppCompatActivity {
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goto_ForgotPass = new Intent(login_page.this,Forgot_Activity.class);
+                Intent goto_ForgotPass = new Intent(login_page_old.this,Forgot_Activity.class);
                 startActivity(goto_ForgotPass);
             }
         });
@@ -99,7 +99,7 @@ public class login_page extends AppCompatActivity {
             public void onClick(View v) {
                 username.setText("");
                 password.setText("");
-                Toast.makeText(login_page.this, "Clear all Value", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login_page_old.this, "Clear all Value", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -109,7 +109,7 @@ public class login_page extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                 if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                    Toast.makeText(login_page.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login_page_old.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
                 } else {
                     DocumentReference docRef = db.collection("user").document(username.getText().toString());
                     docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -127,44 +127,44 @@ public class login_page extends AppCompatActivity {
                             st_status.append(document.get("status"));
 
                             if (st_username.toString().equals(username.getText().toString()) && st_password.toString().equals(password.getText().toString()) && st_status.toString().equals("1")) {
-                                Toast.makeText(login_page.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login_page_old.this, "Login Success", Toast.LENGTH_SHORT).show();
                                 sendLoginData();
                             } else if (st_username.toString().equals(username.getText().toString()) && st_password.toString().equals(password.getText().toString()) && st_status.toString().equals("0")) {
-                                Toast.makeText(login_page.this, "You Account is LOCK !!! Please wait for admin to approve", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login_page_old.this, "You Account is LOCK !!! Please wait for admin to approve", Toast.LENGTH_SHORT).show();
                             } else {
                                 counter = counter + 1;
                                 if (counter < 5) {
-                                    Toast.makeText(login_page.this, "Login Failed " + counter + " Time", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login_page_old.this, "Login Failed " + counter + " Time", Toast.LENGTH_SHORT).show();
                                 } else {
                                     db.collection("user").document(username.getText().toString()).update("status", "0");
                                     alterDialog(); //AlertD
                                 }
                         /*if (username.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                            Toast.makeText(login_page.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login_page_old.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
                                     if(document.get("password").toString().equals(password.getText().toString())){
-                                        Toast.makeText(login_page.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(login_page_old.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                         sendLoginData();
                                     }
                                     else if (password == null){
-                                        Toast.makeText(login_page.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(login_page_old.this, "Please enter password", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(login_page.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(login_page_old.this, "Login Failed", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(login_page.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login_page_old.this, "Login Failed", Toast.LENGTH_SHORT).show();
                             }
                         }*/
                             }
                         }
 
                         private void alterDialog() {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(login_page.this);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(login_page_old.this);
                             builder.setTitle("Login Failed");
                             builder.setMessage("You Account is LOCK !!! Please wait for admin to approve");
                             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
