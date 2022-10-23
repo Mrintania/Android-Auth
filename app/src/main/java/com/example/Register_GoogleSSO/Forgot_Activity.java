@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -79,7 +80,6 @@ public class Forgot_Activity extends AppCompatActivity {
                             st_username.append(documentSnapshot.get("username"));
                             st_email.append(documentSnapshot.get("email"));
                             st_status.append(documentSnapshot.get("status"));
-
 
                             if (st_username.toString().equals(username.getText().toString()) && st_email.toString().equals(email.getText().toString()) && st_status.toString().equals("0")) {
                                 Intent goto_password_recovery = new Intent(Forgot_Activity.this, Password_Recovery.class);

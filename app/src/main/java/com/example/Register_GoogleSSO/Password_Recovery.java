@@ -17,9 +17,13 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Password_Recovery extends AppCompatActivity {
 
@@ -57,9 +61,82 @@ public class Password_Recovery extends AppCompatActivity {
         reset_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Function check password and confirm password must be same
+                //เช็ดใน Array ของ password
+                //ถ้า password ใหม่ ตรงกับ password เก่า ให้แสดงข้อความว่า "Password is used"
+                //ถ้า password ใหม่ ไม่ตรงกับ password เก่า ให้แสดงข้อความว่า "Password is not used" และ เปลี่ยน password
+                //เช็คว่า password ใหม่กับยืนยัน password ตรงกันหรือไม่
+                //เพิ่ม password ใหม่ลงใน Array ของ password
+                //arrayUnion คือ เพิ่มข้อมูลลงใน Array
+                //Collection "user" คือ ชื่อ Collection ที่เราต้องการเพิ่มข้อมูล
+                //Document "username" คือ ชื่อ Document ที่เราต้องการเพิ่มข้อมูล เอามาจาก username ที่เราได้รับมาจากหน้า Login
 
-                DocumentReference docRef = db.collection("user").document(username);
-                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                CollectionReference password_checker = db.collection("user");
+                password_checker.whereArrayContains("password",NewPassword.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            if(task.getResult().size() > 0){
+                                Toast.makeText(Password_Recovery.this, "Password is used", Toast.LENGTH_SHORT).show();
+                            }else{
+                                if(NewPassword.getText().toString().equals(ConPassword.getText().toString())){
+                                    DocumentReference password_recovery = db.collection("user").document(username);
+                                    password_recovery.update("password", FieldValue.arrayUnion(NewPassword.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                password_recovery.update("status","1").addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if(task.isSuccessful()){
+                                                            AldSuccess();
+                                                        }
+                                                    }
+                                                });
+                                            }else{
+                                                Toast.makeText(Password_Recovery.this, "Password is not used", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    Toast.makeText(Password_Recovery.this, "Password is not match", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+                });
+
+
+                /*CollectionReference PasswordUsedRef = db.collection("user");
+                PasswordUsedRef.whereArrayContains("password",NewPassword.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot document : task.getResult()){
+                                if(document.exists()){
+                                    Toast.makeText(Password_Recovery.this, "Password is used", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    //Toast.makeText(Password_Recovery.this, "Password is not used", Toast.LENGTH_SHORT).show();
+                                    if(checkPassword()){
+                                        //เพิ่ม password ใหม่ลงใน Array ของ password
+                                        //arrayUnion คือ เพิ่มข้อมูลลงใน Array
+                                        docRef.collection("user").document(username).update("password", FieldValue.arrayUnion(NewPassword.getText().toString()));
+                                        docRef.collection("user").document(username).update("status","1");
+                                        AldSuccess();
+                                    }
+                                    else{
+                                        Toast.makeText(Password_Recovery.this, "Password not match", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            } //end for
+                        } else {
+                            Toast.makeText(Password_Recovery.this, "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });*/
+            }
+                /*docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         //ถ้าเจอ username ในฐานข้อมูล
@@ -84,8 +161,7 @@ public class Password_Recovery extends AppCompatActivity {
                     }
 
 
-                });
-            }
+                });*/
         });
     }
 
