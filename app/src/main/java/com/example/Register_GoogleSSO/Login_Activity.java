@@ -125,6 +125,70 @@ public class Login_Activity extends AppCompatActivity {
             String username = floatingUsernameLabel.getEditText().getText().toString();
             String password = floatingPasswordLabel.getEditText().getText().toString();
 
+/*
+            //Get last data in array of password (firebase)
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            CollectionReference users = db.collection("users");
+            DocumentReference docRef = users.document(username);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            String[] passwordArray = document.get("password").toString().split(",");
+                            String lastPassword = passwordArray[passwordArray.length-1];
+                            if (lastPassword.equals(password)) {
+                                if (username.equals("admin")) {
+                                    SendAdminLogInData();
+                                } else {
+                                    SendUsersLogInData();
+                                }
+                            } else {
+                                counter++;
+                                if (counter == 3) {
+                                    login.setEnabled(false);
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
+                                    builder.setTitle("Error");
+                                    builder.setMessage("You have entered wrong password 3 times! Please try again later!");
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            finish();
+                                        }
+                                    });
+                                    builder.show();
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
+                                    builder.setTitle("Error");
+                                    builder.setMessage("Wrong password! Please try again!");
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    builder.show();
+                                }
+                            }
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
+                            builder.setTitle("Error");
+                            builder.setMessage("User does not exist! Please try again!");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.show();
+                        }
+                    } else {
+                        Toast.makeText(Login_Activity.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        });*/
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -133,7 +197,6 @@ public class Login_Activity extends AppCompatActivity {
             } else {
                 DocumentReference docRef = db.collection("user").document(username);
                 DocumentReference docAdmin = db.collection("admin").document(username);
-
                 //check user is admin or not
                 docAdmin.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -156,10 +219,22 @@ public class Login_Activity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
+                                                //check user password
                                                 String user_password = document.getString("password");
-                                                //String user_status = document.getString("status");
                                                 StringBuilder user_status_builder = new StringBuilder();
+                                                //check user password
+
+                                                //check user status
                                                 user_status_builder.append(document.get("status"));
+                                                //check user status
+
+                                                //ตรวจสอบ Array ของ password ว่ามี password ที่ตรงกับที่ user กรอกมาหรือไม่
+                                                /*StringBuilder user_password_builder = new StringBuilder();
+                                                user_password_builder.append(document.getString("password"));
+                                                String [] passwordArray = user_password_builder.toString().split(",");
+                                                String lastPassword = passwordArray[passwordArray.length-1];*/
+                                                //END// ตรวจสอบ Array ของ password ว่ามี password ที่ตรงกับที่ user กรอกมาหรือไม่
+
 
                                                 if (user_password.equals(password) && user_status_builder.toString().equals("1") ) {
                                                     Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();

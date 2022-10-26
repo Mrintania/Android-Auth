@@ -32,6 +32,7 @@ public class Password_Recovery extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Intent goto_login = new Intent(Password_Recovery.this,Login_Activity.class);
                 startActivity(goto_login);
+                finish();
                 dialog.dismiss();
             }
         });
