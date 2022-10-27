@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login_Activity extends AppCompatActivity {
     ///New login Method
 
-    Button login,clear,forgotPass;
+    Button login,clear;
+    TextView forgotPass;
     int counter = 0;
 
     //Floating edittext for username
@@ -108,14 +110,14 @@ public class Login_Activity extends AppCompatActivity {
         SetupPasswordFloatingLabelError();
 
         //Clear Button
-        clear = findViewById(R.id.btn_clear);
+        /*clear = findViewById(R.id.btn_clear);
         clear.setOnClickListener(v -> {
             TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
             TextInputLayout floatingPasswordLabel = (TextInputLayout) findViewById(R.id.password_txt_input_layout);
             floatingUsernameLabel.getEditText().setText("");
             floatingPasswordLabel.getEditText().setText("");
             Toast.makeText(this, "Clear all value", Toast.LENGTH_SHORT).show();
-        });
+        });*/
 
         //Login Button
         login = findViewById(R.id.btn_login);

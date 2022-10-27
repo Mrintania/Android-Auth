@@ -6,78 +6,124 @@
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
+    android:background="@drawable/bg"
+
     tools:context=".Login_Activity">
 
-        <TextView
-            android:id="@+id/txt_login"
-            android:text="Login-page"
-            android:textSize="40dp"
-            android:paddingBottom="20pt"
-            android:paddingTop="20pt"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/banner"
             android:gravity="center"
-            android:layout_gravity="center"/>
+            android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_txt_input_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/float_username"
-                    android:layout_width="200dp"
+                <LinearLayout
+                    android:layout_width="298dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Username"
-                    android:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="138dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_gravity="center"
+                    android:background="@drawable/box"
+                    android:elevation="20dp"
+                    android:layout_marginTop="100dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_txt_input_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_gravity="center"
-            app:passwordToggleEnabled="true">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/float_password"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="138dp" />
+                                <ImageView
+                                    android:id="@+id/imageView7"
+                                    android:layout_width="112dp"
+                                    android:layout_height="55dp"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    app:srcCompat="@drawable/login"
+                                    tools:layout_conversion_absoluteHeight="40dp"
+                                    tools:layout_conversion_absoluteWidth="298dp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/username_txt_input_layout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    app:startIconDrawable="@drawable/ic_user"
+                                    tools:layout_conversion_absoluteHeight="60dp"
+                                    tools:layout_conversion_absoluteWidth="200dp">
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit"
-            android:layout_gravity="center"/>
-        <Button
-            android:id="@+id/btn_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear"
-            android:layout_gravity="center"/>
-        <Button
-            android:id="@+id/btn_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Forgotpassword"/>
+                                        <EditText
+                                            android:id="@+id/float_username"
+                                            android:layout_width="250dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="10dp"
+                                            android:background="@drawable/custom_input"
+                                            android:ems="10"
+                                            android:foregroundGravity="center"
+                                            android:hint="Username"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            tools:layout_conversion_absoluteHeight="50dp"
+                                            tools:layout_conversion_absoluteWidth="200dp"
+                                            tools:layout_editor_absoluteX="106dp"
+                                            tools:layout_editor_absoluteY="404dp" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/password_txt_input_layout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    app:passwordToggleEnabled="true"
+                                    app:startIconDrawable="@drawable/ic_pass"
+                                    tools:layout_conversion_absoluteHeight="66dp"
+                                    tools:layout_conversion_absoluteWidth="200dp">
+
+                                        <EditText
+                                            android:id="@+id/float_password"
+                                            android:layout_width="250dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:background="@drawable/custom_input"
+                                            android:ems="10"
+                                            android:hint="Password"
+                                            android:inputType="textPassword"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            tools:layout_conversion_absoluteHeight="56dp"
+                                            tools:layout_conversion_absoluteWidth="200dp"
+                                            tools:layout_editor_absoluteX="106dp"
+                                            tools:layout_editor_absoluteY="401dp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <Button
+                                    android:id="@+id/btn_login"
+                                    android:layout_width="250dp"
+                                    android:layout_height="58dp"
+                                    android:layout_gravity="center"
+                                    android:text="Submit" />
+
+                                <TextView
+                                    android:id="@+id/btn_forgot_password"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:paddingRight="20dp"
+                                    android:text="Forgot Password?"
+                                    android:textColor="@color/orange" />
+
+                        </LinearLayout>
+
+
+                </LinearLayout>
+
+
+        </LinearLayout>
+
 
 </LinearLayout>
