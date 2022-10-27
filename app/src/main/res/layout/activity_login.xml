@@ -22,9 +22,9 @@
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/box"
                     android:elevation="20dp"
-                    android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -101,13 +101,6 @@
 
                                 </com.google.android.material.textfield.TextInputLayout>
 
-                                <Button
-                                    android:id="@+id/btn_login"
-                                    android:layout_width="250dp"
-                                    android:layout_height="58dp"
-                                    android:layout_gravity="center"
-                                    android:text="Submit" />
-
                                 <TextView
                                     android:id="@+id/btn_forgot_password"
                                     android:layout_width="wrap_content"
@@ -117,8 +110,33 @@
                                     android:text="Forgot Password?"
                                     android:textColor="@color/orange" />
 
-                        </LinearLayout>
+                                <Button
+                                    android:id="@+id/btn_login"
+                                    android:layout_width="250dp"
+                                    android:layout_height="58dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:text="Submit" />
 
+                                <TextView
+                                    android:id="@+id/btn_register"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:paddingLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Haven't registered yet?"
+                                    android:textColor="@color/orange" />
+
+                                <ImageButton
+                                    android:id="@+id/img_google"
+                                    android:layout_width="230dp"
+                                    android:layout_height="45dp"
+                                    android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/sso_google" />
+
+                        </LinearLayout>
 
                 </LinearLayout>
 

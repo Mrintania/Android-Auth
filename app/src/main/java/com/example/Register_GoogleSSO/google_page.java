@@ -24,7 +24,7 @@ public class google_page extends AppCompatActivity {
 
     GoogleSignInClient gsc;
 
-    TextView name, email;
+    TextView name, email,welcome;
     Button signOut;
     ImageView profile;
     ImageButton profileImg;
@@ -43,6 +43,7 @@ public class google_page extends AppCompatActivity {
         email = findViewById(R.id.txt_email);
         signOut = findViewById(R.id.but_logout);
         profile = findViewById(R.id.imageView);
+        welcome = findViewById(R.id.tv_welcome);
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -74,6 +75,8 @@ public class google_page extends AppCompatActivity {
             }
         });
 
+        welcome.setText("Welcome " + name.getText().toString());
+
     }
 
 
@@ -82,7 +85,7 @@ public class google_page extends AppCompatActivity {
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete( Task<Void> task) {
-                Intent intent = new Intent(google_page.this, MainActivity.class);
+                Intent intent = new Intent(google_page.this, Login_Activity.class);
                 startActivity(intent);
                 finish();
             }
