@@ -76,13 +76,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".login_page_old"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".register_page"
             android:exported="false">
             <meta-data

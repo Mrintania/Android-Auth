@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,7 +43,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Username : " />
+                            android:text="Username : "
+                            android:textColor="@color/black"/>
 
                         <TextView
                             android:id="@+id/card_username"
@@ -61,7 +63,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Password : " />
+                            android:text="Password : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_password"
@@ -81,7 +84,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Name : " />
+                            android:text="Name : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_name"
@@ -100,7 +104,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Phone : " />
+                            android:text="Phone : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_phone"
@@ -119,7 +124,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Email : " />
+                            android:text="Email : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_email"
@@ -138,7 +144,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Gender : " />
+                            android:text="Gender : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_gender"
@@ -157,7 +164,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Status : " />
+                            android:text="Status : "
+                            android:textColor="@color/black" />
 
                         <TextView
                             android:id="@+id/card_status"
@@ -178,33 +186,37 @@
 
                 <Button
                     android:id="@+id/btn_Lock_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
                     android:layout_margin="3dp"
-                    android:text="Lock" />
+                    android:theme="@style/Button.White"
+                    android:text="Lock"
+                    android:textSize="9sp"
+                    />
 
                 <Button
                     android:id="@+id/btn_Unlock_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
                     android:layout_margin="3dp"
-                    android:text="Unlock" />
+                    android:textSize="9sp"
+                    android:text="Unlock"/>
 
                 <Button
                     android:id="@+id/btn_update_PerUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
                     android:layout_margin="3dp"
-                    android:layout_gravity="center"
-                    android:text="Edit" />
+                    android:textSize="9sp"
+                    android:text="edit"/>
 
                 <Button
                     android:id="@+id/btn_delete_PerUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="75dp"
+                    android:layout_height="40dp"
                     android:layout_margin="3dp"
-                    android:layout_gravity="center"
-                    android:text="Delete" />
+                    android:textSize="9sp"
+                    android:text="delete"/>
 
 
             </LinearLayout>
