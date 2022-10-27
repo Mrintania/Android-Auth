@@ -10,6 +10,7 @@
     <color name="white">#ffffff</color>
     <color name="edit">#FFCA28</color>
     <color name="logout">#F44336</color>
-    <color name="red" >#FF0000</color>
+    <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
+    <color name="blue">#59D62A</color>
 </resources>

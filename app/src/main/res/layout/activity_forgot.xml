@@ -15,77 +15,76 @@
         android:orientation="vertical">
 
 
-            <LinearLayout
-                android:layout_width="298dp"
+        <LinearLayout
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/box"
+            android:elevation="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="179dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/recove"
+                tools:layout_conversion_absoluteHeight="40dp"
+                tools:layout_conversion_absoluteWidth="298dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/box"
-                android:elevation="20dp"
-                android:layout_marginTop="160dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+                app:startIconDrawable="@drawable/ic_email">
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="179dp"
-                    android:layout_height="51dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    app:srcCompat="@drawable/recove"
-                    tools:layout_conversion_absoluteHeight="40dp"
-                    tools:layout_conversion_absoluteWidth="298dp" />
-
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_email"
-                    android:layout_gravity="center">
-
-                    <EditText
-                        android:id="@+id/fed_email"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:foregroundGravity="center"
-                        android:hint="Email" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/fed_email"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:startIconDrawable="@drawable/ic_user">
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/custom_input"
+                    android:ems="10"
+                    android:foregroundGravity="center"
+                    android:hint="Email" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/fed_uname"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:foregroundGravity="center"
-                        android:hint="User" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:startIconDrawable="@drawable/ic_user">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                <EditText
+                    android:id="@+id/fed_uname"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_input"
+                    android:ems="10"
+                    android:foregroundGravity="center"
+                    android:hint="User" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <Button
-                        android:id="@+id/but_submit"
-                        android:layout_width="250dp"
-                        android:layout_height="55dp"
-                        android:text="Accept" />
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/but_submit"
+                    android:layout_width="250dp"
+                    android:layout_height="55dp"
+                    android:text="Accept" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
