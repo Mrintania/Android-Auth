@@ -7,118 +7,142 @@
     android:orientation="vertical"
     tools:context=".login_success"
     android:layout_gravity="center"
-    android:gravity="">
+    android:gravity=""
+    android:background="@drawable/bg">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Login-Success"
-        android:paddingTop="40dp"
-        android:textSize="40dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center">
+        android:background="@drawable/banner"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:text="Login-Success"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
 
         <LinearLayout
-            android:layout_width="119dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Username" />
+            <LinearLayout
+                android:layout_width="119dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="E-mail" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="139dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username" />
+
+                <TextView
+                    android:id="@+id/txt_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password" />
+
+                <TextView
+                    android:id="@+id/txt_pn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone" />
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name" />
+
+                <TextView
+                    android:id="@+id/txt_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender" />
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail" />
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/txt_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Username" />
+            <Button
+                android:id="@+id/but_edit"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background=""
+                android:layout_marginEnd="10dp"
+                android:text="Edit profile" />
 
-            <TextView
-                android:id="@+id/txt_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password" />
-
-            <TextView
-                android:id="@+id/txt_pn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone" />
-
-            <TextView
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/txt_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender" />
-
-            <TextView
-                android:id="@+id/txt_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="E-mail" />
+            <Button
+                android:id="@+id/but_logout"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@color/logout"
+                android:text="Logout" />
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/but_logout"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Logout" />
-
-    <Button
-        android:id="@+id/but_edit"
-        android:layout_width="150sp"
-        android:layout_height="wrap_content"
-        android:text="Edit profile"
-        android:layout_gravity="center"/>
 
 </LinearLayout>
