@@ -6,192 +6,198 @@
     android:layout_height="match_parent"
     tools:context=".register_page"
     android:orientation="vertical"
-    android:gravity=""
     android:layout_gravity="center">
-
-    <TextView
-        android:id="@+id/txt_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register-Page"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        android:layout_gravity="center"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="56dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txt_username"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="Username"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="147dp" />
-
-            <TextView
-                android:id="@+id/txt_password"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Password"
-                android:gravity="center"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="206dp" />
-
-            <TextView
-                android:id="@+id/txt_email"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="E-mail"
-                android:gravity="center"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="323dp" />
-
-            <TextView
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Name"
-                android:gravity="center"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="262dp" />
-
-            <TextView
-                android:id="@+id/txt_pn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="PhoneNumber"
-                android:gravity="center"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="385dp" />
-
-            <TextView
-                android:id="@+id/txt_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:gravity="center"
-                android:text="Gender"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="504dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/ed_username"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="text"
-                android:hint="Please enter your username"
-                android:capitalize="none"
-                tools:layout_editor_absoluteX="134dp"
-                tools:layout_editor_absoluteY="133dp" />
-
-            <EditText
-                android:id="@+id/ed_userpass"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Please enter your password"
-                android:inputType="textPassword"
-                tools:layout_editor_absoluteX="134dp"
-                tools:layout_editor_absoluteY="192dp" />
-
-            <EditText
-                android:id="@+id/ed_email"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Please enter your email"
-                android:inputType="textEmailAddress"
-                tools:layout_editor_absoluteX="141dp"
-                tools:layout_editor_absoluteY="309dp" />
-
-            <EditText
-                android:id="@+id/ed_name"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Please enter your name"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="139dp"
-                tools:layout_editor_absoluteY="253dp" />
-
-            <EditText
-                android:id="@+id/ed_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Please enter your phone number"
-                android:inputType="phone"
-                tools:layout_editor_absoluteX="139dp"
-                tools:layout_editor_absoluteY="371dp" />
-
-            <RadioGroup
-                android:id="@+id/radioGroup_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="138dp"
-                tools:layout_editor_absoluteY="466dp">
-
-                <RadioButton
-                    android:id="@+id/rad_male"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Male" />
-
-                <RadioButton
-                    android:id="@+id/rad_female"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Female" />
-
-            </RadioGroup>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:background="@drawable/bg">
 
-        <Button
-            android:id="@+id/but_register"
+        <TextView
+            android:id="@+id/txt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="register"
-            tools:layout_editor_absoluteX="71dp"
-            tools:layout_editor_absoluteY="595dp" />
+            android:layout_gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:text="Register-Page"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="56dp" />
 
-        <Button
-            android:id="@+id/but_clear"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="clear"
-            tools:layout_editor_absoluteX="246dp"
-            tools:layout_editor_absoluteY="595dp" />
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Username"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:layout_editor_absoluteY="147dp" />
+
+                <TextView
+                    android:id="@+id/txt_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Password"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:layout_editor_absoluteY="206dp" />
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="E-mail"
+                    tools:layout_editor_absoluteX="33dp"
+                    tools:layout_editor_absoluteY="323dp" />
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Name"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:layout_editor_absoluteY="262dp" />
+
+                <TextView
+                    android:id="@+id/txt_pn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="PhoneNumber"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:layout_editor_absoluteY="385dp" />
+
+                <TextView
+                    android:id="@+id/txt_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:text="Gender"
+                    tools:layout_editor_absoluteX="31dp"
+                    tools:layout_editor_absoluteY="504dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/ed_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:capitalize="none"
+                    android:ems="10"
+                    android:hint="Please enter your username"
+                    android:inputType="text"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="133dp" />
+
+                <EditText
+                    android:id="@+id/ed_userpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Please enter your password"
+                    android:inputType="textPassword"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="192dp" />
+
+                <EditText
+                    android:id="@+id/ed_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Please enter your email"
+                    android:inputType="textEmailAddress"
+                    tools:layout_editor_absoluteX="141dp"
+                    tools:layout_editor_absoluteY="309dp" />
+
+                <EditText
+                    android:id="@+id/ed_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Please enter your name"
+                    android:inputType="textPersonName"
+                    tools:layout_editor_absoluteX="139dp"
+                    tools:layout_editor_absoluteY="253dp" />
+
+                <EditText
+                    android:id="@+id/ed_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:hint="Please enter your phone number"
+                    android:inputType="phone"
+                    tools:layout_editor_absoluteX="139dp"
+                    tools:layout_editor_absoluteY="371dp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="138dp"
+                    tools:layout_editor_absoluteY="466dp">
+
+                    <RadioButton
+                        android:id="@+id/rad_male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/rad_female"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/but_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="register"
+                tools:layout_editor_absoluteX="71dp"
+                tools:layout_editor_absoluteY="595dp" />
+
+            <Button
+                android:id="@+id/but_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="clear"
+                tools:layout_editor_absoluteX="246dp"
+                tools:layout_editor_absoluteY="595dp" />
+        </LinearLayout>
     </LinearLayout>
 
 
