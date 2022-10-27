@@ -70,7 +70,7 @@
                     android:background="@drawable/custom_input"
                     android:ems="10"
                     android:foregroundGravity="center"
-                    android:hint="User" />
+                    android:hint="Username" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
