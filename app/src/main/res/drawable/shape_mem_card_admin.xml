@@ -3,6 +3,14 @@
     android:shape="rectangle">
 
     <corners android:radius="20dp"/>
-    <solid android:color="#F8C471"/>
+<!--    <gradient android:startColor="#E8E8E8"
+        android:centerColor="@color/white"
+        android:endColor="#E8E8E8"/>-->
+
+    <gradient
+        android:startColor="@color/card_start"
+        android:centerColor="@color/white"
+        android:endColor="@color/card_end"
+        android:angle="-200" />
 
 </shape>

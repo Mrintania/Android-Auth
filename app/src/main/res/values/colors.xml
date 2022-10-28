@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="bg">#f1f1f1</color>
+    <color name="bg">#F2F2F2</color>
     <color name="white">#ffffff</color>
     <color name="edit">#FFCA28</color>
     <color name="logout">#F44336</color>
@@ -14,4 +14,6 @@
     <color name="green">#00FF00</color>
     <color name="blue">#59D62A</color>
     <color name="stoke">#424949</color>
+    <color name="card_start">#e8e8e8</color>
+    <color name="card_end">#dfdfdf</color>
 </resources>
