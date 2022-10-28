@@ -7,17 +7,13 @@
     android:baselineAligned="false"
     android:orientation="vertical"
     android:background="@drawable/bg"
-
     tools:context=".Login_Activity">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/banner"
             android:gravity="center"
             android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"
@@ -28,7 +24,6 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -128,20 +123,14 @@
                                     android:text="Haven't registered yet?"
                                     android:textColor="@color/orange" />
 
-                                <ImageButton
+                                <ImageView
                                     android:id="@+id/img_google"
-                                    android:layout_width="230dp"
+                                    android:layout_width="213dp"
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:scaleType="centerCrop"
                                     app:srcCompat="@drawable/sso_google" />
-
                         </LinearLayout>
-
                 </LinearLayout>
-
-
         </LinearLayout>
-
-
 </LinearLayout>

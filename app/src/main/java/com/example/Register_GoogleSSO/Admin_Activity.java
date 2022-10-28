@@ -41,8 +41,11 @@ public class Admin_Activity extends AppCompatActivity {
             }
         });
 
+        //โชว์ข้อมูล Admin
+        Intent i = getIntent();
+        String get_username = i.getStringExtra("username_admin");
         TextView admin_username = findViewById(R.id.txt_admin);
-        admin_username.setText("Welcome, " + getIntent().getStringExtra("username"));
+        admin_username.setText("Welcome, " + getIntent().getStringExtra("username_admin"));
 
 
         recyclerView = findViewById(R.id.recyclerView);

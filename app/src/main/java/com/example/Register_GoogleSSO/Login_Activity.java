@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "MainActivity";
-    ImageButton googleBtn;
+    ImageView googleBtn;
     //Google Sign In
 
     Button login,clear;
@@ -113,6 +114,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
         floatingUsernameLabel.getEditText().getText().toString();
         goto_admin_login_success.putExtra("username", floatingUsernameLabel.getEditText().getText().toString());
+        goto_admin_login_success.putExtra("username_admin", floatingUsernameLabel.getEditText().getText().toString());
         finish();
         startActivity(goto_admin_login_success);
     }
