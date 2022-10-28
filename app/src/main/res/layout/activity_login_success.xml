@@ -22,14 +22,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="505dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="333dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="160dp"
             android:background="@drawable/box"
             android:elevation="20dp"
             android:gravity="center"
@@ -61,10 +61,11 @@
             <LinearLayout
                 android:layout_width="297dp"
                 android:layout_height="206dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:gravity="center">
 
                 <LinearLayout
-                    android:layout_width="114dp"
+                    android:layout_width="97dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -72,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="center|right"
+                        android:gravity="center|left"
                         android:text="Username : "
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -81,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="center|right"
+                        android:gravity="center|left"
                         android:text="Password : "
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -90,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="center|right"
+                        android:gravity="center|left"
                         android:text="Phone : "
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -99,7 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="center|right"
+                        android:gravity="center|left"
                         android:text="E-mail : "
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -108,7 +109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="center|right"
+                        android:gravity="center|left"
                         android:text="Gender : "
                         android:textColor="@color/black"
                         android:textSize="15dp" />
@@ -171,6 +172,14 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/but_edit"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="Edit" />
+
+                <Button
                     android:id="@+id/but_logout"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
@@ -178,13 +187,6 @@
                     android:layout_margin="10dp"
                     android:text="Logout" />
 
-                <Button
-                    android:id="@+id/but_edit"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:text="Edit" />
 
             </LinearLayout>
 
