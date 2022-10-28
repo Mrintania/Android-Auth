@@ -7,14 +7,13 @@
     tools:context=".Edit_Profile_Activity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@drawable/banner"
-    >
+    android:background="@drawable/banner">
 
     <LinearLayout
         android:layout_width="333dp"
-        android:layout_height="405dp"
+        android:layout_height="476dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/box"
         android:elevation="20dp"
         android:gravity="center"
@@ -22,19 +21,8 @@
 
         <LinearLayout
             android:layout_width="312dp"
-            android:layout_height="373dp"
-
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/Edit_Profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Edit Profile"
-                android:textColor="@color/black"
-                android:textSize="40dp" />
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -43,7 +31,8 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                app:srcCompat="@drawable/login"
+                android:baselineAligned="false"
+                app:srcCompat="@drawable/setup"
                 tools:layout_conversion_absoluteHeight="40dp"
                 tools:layout_conversion_absoluteWidth="298dp" />
 
@@ -52,82 +41,132 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity=""
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="Name :" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:text="E-mail :" />
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:text="Password :" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center"
-                        android:text="Phone :" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/et_name"
-                        android:layout_width="200dp"
-                        android:layout_height="40dp"
-                        android:hint="name" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/username_txt_input_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:startIconDrawable="@drawable/ic_name"
+                        tools:layout_conversion_absoluteHeight="66dp"
+                        tools:layout_conversion_absoluteWidth="200dp">
 
-                    <EditText
-                        android:id="@+id/et_email"
-                        android:layout_width="200dp"
-                        android:layout_height="40dp"
-                        android:hint="email" />
+                        <EditText
+                            android:id="@+id/et_name"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="Name"
+                            android:inputType="text"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_conversion_absoluteHeight="56dp"
+                            tools:layout_conversion_absoluteWidth="200dp"
+                            tools:layout_editor_absoluteX="106dp"
+                            tools:layout_editor_absoluteY="401dp" />
 
-                    <EditText
-                        android:id="@+id/et_password"
-                        android:layout_width="200dp"
-                        android:layout_height="40dp"
-                        android:hint="password" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/et_phone"
-                        android:layout_width="200dp"
-                        android:layout_height="40dp"
-                        android:hint="PhoneNumber" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/username_txt_input_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:startIconDrawable="@drawable/ic_name"
+                        tools:layout_conversion_absoluteHeight="66dp"
+                        tools:layout_conversion_absoluteWidth="200dp">
+
+                        <EditText
+                            android:id="@+id/et_email"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="E-mail"
+                            android:inputType="text"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_conversion_absoluteHeight="56dp"
+                            tools:layout_conversion_absoluteWidth="200dp"
+                            tools:layout_editor_absoluteX="106dp"
+                            tools:layout_editor_absoluteY="401dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_txt_input_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:startIconDrawable="@drawable/ic_pass"
+                        tools:layout_conversion_absoluteHeight="66dp"
+                        tools:layout_conversion_absoluteWidth="200dp">
+
+                        <EditText
+                            android:id="@+id/et_password"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_conversion_absoluteHeight="56dp"
+                            tools:layout_conversion_absoluteWidth="200dp"
+                            tools:layout_editor_absoluteX="106dp"
+                            tools:layout_editor_absoluteY="401dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/username_txt_input_layout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:startIconDrawable="@drawable/ic_phone"
+                        tools:layout_conversion_absoluteHeight="66dp"
+                        tools:layout_conversion_absoluteWidth="200dp">
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="Phone"
+                            android:inputType="phone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_conversion_absoluteHeight="56dp"
+                            tools:layout_conversion_absoluteWidth="200dp"
+                            tools:layout_editor_absoluteX="106dp"
+                            tools:layout_editor_absoluteY="401dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/but_update"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:text="update" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/but_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="update Profile"
-                android:layout_margin="10dp"/>
 
         </LinearLayout>
     </LinearLayout>
