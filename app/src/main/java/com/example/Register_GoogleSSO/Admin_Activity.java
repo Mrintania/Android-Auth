@@ -77,11 +77,11 @@ public class Admin_Activity extends AppCompatActivity {
                     holder.status.setTextColor(getResources().getColor(R.color.teal_200));
 
                     //Set button btn_Unlock to false//
-                    Button btn_Unlock = holder.itemView.findViewById(R.id.btn_unlock_user);
+                    Button btn_Unlock = holder.itemView.findViewById(R.id.btn_Unlock_user);
                     btn_Unlock.setEnabled(false);
 
                     //Set button btn_Lock to true//
-                    Button btn_Lock = holder.itemView.findViewById(R.id.btn_lock_user);
+                    Button btn_Lock = holder.itemView.findViewById(R.id.btn_Lock_user);
                     btn_Lock.setEnabled(true);
                 } else {
                     holder.status.setText("Inactive");
@@ -89,11 +89,11 @@ public class Admin_Activity extends AppCompatActivity {
                     holder.status.setTextColor(getResources().getColor(R.color.red));
 
                     //Set button btn_Unlock to true//
-                    Button btn_Unlock = holder.itemView.findViewById(R.id.btn_unlock_user);
+                    Button btn_Unlock = holder.itemView.findViewById(R.id.btn_Unlock_user);
                     btn_Unlock.setEnabled(true);
 
                     //Set button btn_Lock to false//
-                    Button btn_Lock = holder.itemView.findViewById(R.id.btn_lock_user);
+                    Button btn_Lock = holder.itemView.findViewById(R.id.btn_Lock_user);
                     btn_Lock.setEnabled(false);
                 }
             }
@@ -133,7 +133,7 @@ public class Admin_Activity extends AppCompatActivity {
             status = itemView.findViewById(R.id.card_status);
 
             //Unlock user//
-            itemView.findViewById(R.id.btn_unlock_user).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.btn_Unlock_user).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DocumentReference docRefUpdate = db.collection("user").document(username.getText().toString()); //Get username from TextView
@@ -143,7 +143,7 @@ public class Admin_Activity extends AppCompatActivity {
             });
 
             //Lock user
-            itemView.findViewById(R.id.btn_lock_user).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.btn_Lock_user).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DocumentReference docRefUpdate = db.collection("user").document(username.getText().toString()); //Get username from TextView
@@ -153,7 +153,7 @@ public class Admin_Activity extends AppCompatActivity {
             });
 
             //Update user data
-            itemView.findViewById(R.id.btn_update_peruse).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.btn_update_PerUser).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(Admin_Activity.this, Admin_edit_user_Activity.class);
