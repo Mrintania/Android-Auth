@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -37,9 +38,9 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_edit_user);
 
 
-        //ทักทาย User
+        //หัว
         tv1 = findViewById(R.id.tv1);
-        tv1.setText("Hi, " + getIntent().getStringExtra("username"));
+        tv1.setText(getIntent().getStringExtra("username"));
 
 
 
@@ -96,6 +97,7 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
     private class Data_holder_ed extends RecyclerView.ViewHolder {
 
         EditText username, password, email, phone, name, gender,status;
+        Switch sw_status;
 
         public Data_holder_ed(@NonNull View itemView) {
             super(itemView);

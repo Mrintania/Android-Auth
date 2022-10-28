@@ -19,7 +19,7 @@
         android:text="Admin_Edit_Page"
         android:textSize="40dp"
         android:paddingBottom="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,136 +4,192 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center">
-
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">>
-
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="286dp"
             android:layout_height="match_parent"
+            android:layout_margin="10sp"
+            android:background="@drawable/shape_memedit_card_admin"
             android:orientation="vertical"
-            android:background="@drawable/shape_mem_card_admin">
+            android:layout_gravity="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:paddingLeft="30dp">
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Username : " />
+                        android:text="Username"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="2dp"/>
 
                     <EditText
                         android:id="@+id/card_edit_username"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="Username"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Password : " />
+                        android:layout_marginBottom="2dp"
+                        android:text="Password"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/card_edit_password"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="Password"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Email : " />
+                        android:layout_marginBottom="2dp"
+                        android:text="Email"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/card_edit_email"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="E-mail"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Name : " />
+                        android:layout_marginBottom="2dp"
+                        android:text="Name Lastname"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/card_edit_name"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="Name Lname"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Phone : " />
+                        android:layout_marginBottom="2dp"
+                        android:text="PhoneNumber"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/card_edit_phone"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="PhoneNumber"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/textView7"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gender : " />
+                        android:layout_marginBottom="2dp"
+                        android:text="Gender"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
 
                     <EditText
                         android:id="@+id/card_edit_gender"
                         android:layout_width="200dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="25dp"
+                        android:background="@drawable/box_edtxt"
+                        android:hint="Gender"
+                        android:paddingLeft="10dp"
+                        android:textColor="#606060"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="5dp">
 
                     <Button
                         android:id="@+id/btn_update55"
@@ -144,8 +200,6 @@
                         android:text="Update" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </LinearLayout>

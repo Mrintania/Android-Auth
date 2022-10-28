@@ -45,7 +45,6 @@
                                     android:id="@+id/username_txt_input_layout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@color/white"
                                     app:startIconDrawable="@drawable/ic_user"
                                     tools:layout_conversion_absoluteHeight="60dp"
                                     tools:layout_conversion_absoluteWidth="200dp">
@@ -72,7 +71,6 @@
                                     android:id="@+id/password_txt_input_layout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@color/white"
                                     app:passwordToggleEnabled="true"
                                     app:startIconDrawable="@drawable/ic_pass"
                                     tools:layout_conversion_absoluteHeight="66dp"
@@ -129,6 +127,8 @@
                                     android:layout_height="45dp"
                                     android:layout_gravity="center"
                                     android:scaleType="centerCrop"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="10dp"
                                     app:srcCompat="@drawable/sso_google" />
                         </LinearLayout>
                 </LinearLayout>
