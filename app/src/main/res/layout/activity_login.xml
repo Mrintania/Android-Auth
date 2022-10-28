@@ -7,28 +7,23 @@
     android:baselineAligned="false"
     android:orientation="vertical"
     android:background="@drawable/bg"
-
     tools:context=".Login_Activity">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/banner"
             android:gravity="center"
             android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/box"
                     android:elevation="20dp"
-                    android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -101,13 +96,6 @@
 
                                 </com.google.android.material.textfield.TextInputLayout>
 
-                                <Button
-                                    android:id="@+id/btn_login"
-                                    android:layout_width="250dp"
-                                    android:layout_height="58dp"
-                                    android:layout_gravity="center"
-                                    android:text="Submit" />
-
                                 <TextView
                                     android:id="@+id/btn_forgot_password"
                                     android:layout_width="wrap_content"
@@ -117,13 +105,32 @@
                                     android:text="Forgot Password?"
                                     android:textColor="@color/orange" />
 
+                                <Button
+                                    android:id="@+id/btn_login"
+                                    android:layout_width="250dp"
+                                    android:layout_height="58dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:text="Submit" />
+
+                                <TextView
+                                    android:id="@+id/btn_register"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:paddingLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Haven't registered yet?"
+                                    android:textColor="@color/orange" />
+
+                                <ImageView
+                                    android:id="@+id/img_google"
+                                    android:layout_width="213dp"
+                                    android:layout_height="45dp"
+                                    android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/sso_google" />
                         </LinearLayout>
-
-
                 </LinearLayout>
-
-
         </LinearLayout>
-
-
 </LinearLayout>

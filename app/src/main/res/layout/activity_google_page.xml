@@ -9,12 +9,14 @@
     tools:context=".google_page">
 
     <TextView
+        android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google-Page"
-        android:textSize="40sp"
         android:layout_gravity="center"
-        android:textColor="@color/black"/>
+        android:paddingTop="30dp"
+        android:text="Google-Page"
+        android:textColor="@color/orange"
+        android:textSize="35sp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="25dp"
+        android:textColor="@color/black"
         android:text="Name" />
 
     <TextView
@@ -34,10 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="25dp"
         android:text="Email" />
 
     <Button
         android:id="@+id/but_logout"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"

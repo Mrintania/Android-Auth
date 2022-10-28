@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -27,11 +28,19 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
     RecyclerView recyclerView_ed;
     FirestoreRecyclerAdapter adapter1;
 
+    TextView tv1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit_user);
+
+
+        //ทักทาย User
+        tv1 = findViewById(R.id.tv1);
+        tv1.setText("Hi, " + getIntent().getStringExtra("username"));
+
 
 
 
@@ -96,7 +105,7 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
             phone = itemView.findViewById(R.id.card_edit_phone);
             name =  itemView.findViewById(R.id.card_edit_name);
             gender = itemView.findViewById(R.id.card_edit_gender);
-            status = itemView.findViewById(R.id.card_edit_status);
+            //status = itemView.findViewById(R.id.card_edit_status);
 
             itemView.findViewById(R.id.btn_update55).setOnClickListener(new View.OnClickListener() {
                 @Override
