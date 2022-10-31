@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -26,8 +27,6 @@ public class Admin_Activity extends AppCompatActivity {
     RecyclerView recyclerView;
     FirestoreRecyclerAdapter adapter;
 
-    Button  lock, unlock, delete, update, logout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +40,12 @@ public class Admin_Activity extends AppCompatActivity {
                 startActivity(goto_login);
             }
         });
+
+        //โชว์ข้อมูล Admin
+        Intent i = getIntent();
+        String get_username = i.getStringExtra("username_admin");
+        TextView admin_username = findViewById(R.id.txt_admin);
+        admin_username.setText("Welcome, " + getIntent().getStringExtra("username_admin"));
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -69,7 +74,7 @@ public class Admin_Activity extends AppCompatActivity {
                 //Convert status from 1 to Active and 0 to Inactive
                 if(model.getStatus().equals("1")) {
                     holder.status.setText("Active");
-                    holder.status.setTextColor(getResources().getColor(R.color.green));
+                    holder.status.setTextColor(getResources().getColor(R.color.teal_200));
 
                     //Set button btn_Unlock to false//
                     Button btn_Unlock = holder.itemView.findViewById(R.id.btn_Unlock_user);
@@ -115,6 +120,7 @@ public class Admin_Activity extends AppCompatActivity {
     public class Data_holder extends RecyclerView.ViewHolder {
 
         TextView username, password, email, phone, name, gender,status;
+        ImageButton lock, unlock,edit,delete;
 
         public Data_holder(@NonNull View itemView) {
             super(itemView);

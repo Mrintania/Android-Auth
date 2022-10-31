@@ -9,9 +9,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,10 +30,18 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Login_Activity extends AppCompatActivity {
+public class Login_Activity extends AppCompatActivity implements View.OnClickListener{
     ///New login Method
 
-    Button login,clear,forgotPass;
+    //Google Sign In
+    GoogleApiClient mGoogleApiClient;
+    private static final int RC_SIGN_IN = 9001;
+    private static final String TAG = "MainActivity";
+    ImageView googleBtn;
+    //Google Sign In
+
+    Button login,clear;
+    TextView forgotPass;
     int counter = 0;
 
     //Floating edittext for username
@@ -95,6 +114,7 @@ public class Login_Activity extends AppCompatActivity {
         TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
         floatingUsernameLabel.getEditText().getText().toString();
         goto_admin_login_success.putExtra("username", floatingUsernameLabel.getEditText().getText().toString());
+        goto_admin_login_success.putExtra("username_admin", floatingUsernameLabel.getEditText().getText().toString());
         finish();
         startActivity(goto_admin_login_success);
     }
@@ -104,18 +124,32 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getCacheDir().delete();
+
+        //Google Sign In
+        googleBtn = findViewById(R.id.img_google);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestProfile()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(ConnectionResult connectionResult) {
+                        //Toast.makeText(MainActivity.this, "Something went wrong Connection", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        googleBtn.setOnClickListener(this);
+
+        //Google Sign In
+
+
         SetupUsernameFloatingLabelError();
         SetupPasswordFloatingLabelError();
-
-        //Clear Button
-        clear = findViewById(R.id.btn_clear);
-        clear.setOnClickListener(v -> {
-            TextInputLayout floatingUsernameLabel = (TextInputLayout) findViewById(R.id.username_txt_input_layout);
-            TextInputLayout floatingPasswordLabel = (TextInputLayout) findViewById(R.id.password_txt_input_layout);
-            floatingUsernameLabel.getEditText().setText("");
-            floatingPasswordLabel.getEditText().setText("");
-            Toast.makeText(this, "Clear all value", Toast.LENGTH_SHORT).show();
-        });
 
         //Login Button
         login = findViewById(R.id.btn_login);
@@ -125,70 +159,6 @@ public class Login_Activity extends AppCompatActivity {
             String username = floatingUsernameLabel.getEditText().getText().toString();
             String password = floatingPasswordLabel.getEditText().getText().toString();
 
-/*
-            //Get last data in array of password (firebase)
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            CollectionReference users = db.collection("users");
-            DocumentReference docRef = users.document(username);
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            String[] passwordArray = document.get("password").toString().split(",");
-                            String lastPassword = passwordArray[passwordArray.length-1];
-                            if (lastPassword.equals(password)) {
-                                if (username.equals("admin")) {
-                                    SendAdminLogInData();
-                                } else {
-                                    SendUsersLogInData();
-                                }
-                            } else {
-                                counter++;
-                                if (counter == 3) {
-                                    login.setEnabled(false);
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
-                                    builder.setTitle("Error");
-                                    builder.setMessage("You have entered wrong password 3 times! Please try again later!");
-                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            finish();
-                                        }
-                                    });
-                                    builder.show();
-                                } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
-                                    builder.setTitle("Error");
-                                    builder.setMessage("Wrong password! Please try again!");
-                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    });
-                                    builder.show();
-                                }
-                            }
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(Login_Activity.this);
-                            builder.setTitle("Error");
-                            builder.setMessage("User does not exist! Please try again!");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            builder.show();
-                        }
-                    } else {
-                        Toast.makeText(Login_Activity.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        });*/
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -227,14 +197,6 @@ public class Login_Activity extends AppCompatActivity {
                                                 //check user status
                                                 user_status_builder.append(document.get("status"));
                                                 //check user status
-
-                                                //ตรวจสอบ Array ของ password ว่ามี password ที่ตรงกับที่ user กรอกมาหรือไม่
-                                                /*StringBuilder user_password_builder = new StringBuilder();
-                                                user_password_builder.append(document.getString("password"));
-                                                String [] passwordArray = user_password_builder.toString().split(",");
-                                                String lastPassword = passwordArray[passwordArray.length-1];*/
-                                                //END// ตรวจสอบ Array ของ password ว่ามี password ที่ตรงกับที่ user กรอกมาหรือไม่
-
 
                                                 if (user_password.equals(password) && user_status_builder.toString().equals("1") ) {
                                                     Toast.makeText(Login_Activity.this, "Login Success", Toast.LENGTH_SHORT).show();
@@ -277,6 +239,56 @@ public class Login_Activity extends AppCompatActivity {
                 startActivity(goto_forgot_password);
 
         });
+
+        //Register Button
+        TextView register = findViewById(R.id.btn_register);
+        register.setOnClickListener(v -> {
+            Intent goto_register = new Intent(Login_Activity.this, register_page.class);
+            startActivity(goto_register);
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.img_google:
+                signIn();
+                break;
+        }
+    }
+
+    private void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+        if (result.isSuccess()) {
+            // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount acct = result.getSignInAccount();
+            navigateToGoogleActivity();
+        } else {
+            // Signed out, show unauthenticated UI.
+            Toast.makeText(this, "Something went wrong SignIn", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void navigateToGoogleActivity() {
+        Intent intent = new Intent(this, google_page.class);
+        startActivity(intent);
     }
 
     private void alterDialog() {

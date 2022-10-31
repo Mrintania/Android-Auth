@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Forgot_Activity extends AppCompatActivity {
 
     EditText username,email;
-    Button submit,clear;
+    Button submit;
 
     private void AldSuccess(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -46,7 +46,6 @@ public class Forgot_Activity extends AppCompatActivity {
         username = findViewById(R.id.fed_uname);
         email = findViewById(R.id.fed_email);
         submit = findViewById(R.id.but_submit);
-        clear = findViewById(R.id.but_clear);
 
         Intent get_username_FormLogin = getIntent();
         get_username_FormLogin.getStringExtra("username");
@@ -102,15 +101,6 @@ public class Forgot_Activity extends AppCompatActivity {
                         }
                     });
                 }
-            }
-        });
-
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                username.setText("");
-                email.setText("");
-                Toast.makeText(Forgot_Activity.this, "Clear all data", Toast.LENGTH_SHORT).show();
             }
         });
 

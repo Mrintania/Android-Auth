@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -27,11 +29,19 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
     RecyclerView recyclerView_ed;
     FirestoreRecyclerAdapter adapter1;
 
+    TextView tv1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit_user);
+
+
+        //หัว
+        tv1 = findViewById(R.id.tv1);
+        tv1.setText(getIntent().getStringExtra("username"));
+
 
 
 
@@ -87,6 +97,7 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
     private class Data_holder_ed extends RecyclerView.ViewHolder {
 
         EditText username, password, email, phone, name, gender,status;
+        Switch sw_status;
 
         public Data_holder_ed(@NonNull View itemView) {
             super(itemView);
@@ -96,7 +107,7 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
             phone = itemView.findViewById(R.id.card_edit_phone);
             name =  itemView.findViewById(R.id.card_edit_name);
             gender = itemView.findViewById(R.id.card_edit_gender);
-            status = itemView.findViewById(R.id.card_edit_status);
+            //status = itemView.findViewById(R.id.card_edit_status);
 
             itemView.findViewById(R.id.btn_update55).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -125,11 +136,26 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRefUpdate = db.collection("user").document(UserEdit1);
-        docRefUpdate.update("username", UserEdit1);
+        //update Document
+        DocumentReference washingtonRef = db.collection("user").document(UserEdit1);
+        washingtonRef
+                .update("username", UserEdit1,
+                        "password", PassEdit1,
+                        "email", EmailEdit1,
+                        "phone", PhoneEdit1,
+                        "name", NameEdit1)
+                .addOnSuccessListener(aVoid -> {
+                    //Log.d(TAG, "DocumentSnapshot successfully updated!");
+                })
+                .addOnFailureListener(e -> {
+                    //Log.w(TAG, "Error updating document", e);
+                });
+
+        /*docRefUpdate.update("username", UserEdit1);
         docRefUpdate.update("password", PassEdit1);
         docRefUpdate.update("email", EmailEdit1);
         docRefUpdate.update("phone", PhoneEdit1);
-        docRefUpdate.update("name", NameEdit1);
+        docRefUpdate.update("name", NameEdit1);*/
     }
 
     private void alterDialog() {
