@@ -136,11 +136,26 @@ public class Admin_edit_user_Activity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRefUpdate = db.collection("user").document(UserEdit1);
-        docRefUpdate.update("username", UserEdit1);
+        //update Document
+        DocumentReference washingtonRef = db.collection("user").document(UserEdit1);
+        washingtonRef
+                .update("username", UserEdit1,
+                        "password", PassEdit1,
+                        "email", EmailEdit1,
+                        "phone", PhoneEdit1,
+                        "name", NameEdit1)
+                .addOnSuccessListener(aVoid -> {
+                    //Log.d(TAG, "DocumentSnapshot successfully updated!");
+                })
+                .addOnFailureListener(e -> {
+                    //Log.w(TAG, "Error updating document", e);
+                });
+
+        /*docRefUpdate.update("username", UserEdit1);
         docRefUpdate.update("password", PassEdit1);
         docRefUpdate.update("email", EmailEdit1);
         docRefUpdate.update("phone", PhoneEdit1);
-        docRefUpdate.update("name", NameEdit1);
+        docRefUpdate.update("name", NameEdit1);*/
     }
 
     private void alterDialog() {

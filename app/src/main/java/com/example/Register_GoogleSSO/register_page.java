@@ -60,7 +60,7 @@ public class register_page extends AppCompatActivity {
 
 
                 if (username1.isEmpty() || password1.isEmpty() || name1.isEmpty() || email1.isEmpty() || phone1.isEmpty()) {
-                    Toast.makeText(register_page.this, "มึงต้องใส่ให้หมดนะ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(register_page.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
                 } else { //เช็ค Username ซ้ำ
                     DocumentReference DocumentUsernameExist = firebaseFirestore.collection("user").document(username1);
 
@@ -72,7 +72,7 @@ public class register_page extends AppCompatActivity {
                                 if (document.exists()) {
                                     String username2 = document.getString("username");
                                     if (username1.equals(username2)) {
-                                        Toast.makeText(register_page.this, "มึงใส่ Username ซ้ำนะ", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(register_page.this, "Username i exist", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     //แปลงค่าใน Rad-G ให้เป็น String
