@@ -1,4 +1,4 @@
-# test-register
+# Google SSO and register on firebase
 Android studio PJ 
 AJ.Shutchapol
 
